@@ -1,0 +1,12 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# env file
+.env
+
+# Misc
+to-do-list.txt
+
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js

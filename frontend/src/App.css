@@ -1,0 +1,175 @@
+/* Navbar/Header CSS */
+.nav-ul {
+  padding: 5px;
+  margin: 0px;
+  background-color: skyblue;
+}
+
+.nav-right {
+  text-align: right;
+}
+
+.nav-ul li {
+  display: inline-block;
+  padding: 10px; 
+}
+
+.nav-ul li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 5px;
+}
+
+/* Footer CSS */
+.footer {
+  /* position: fixed; */
+  /* bottom: 0; */
+  /* float: inline-end; */
+  background-color: skyblue;
+  width: 100%;
+  text-align: center;
+}
+
+/* Sign Up and Login CSS // Add Product CSS */
+.signUpDiv, .addProductDiv, .updateProductDiv {
+  margin-left: 30%;
+  height: 100dvh;
+}
+
+.profileDiv {
+  height: 100dvh;
+}
+
+.loginDiv {
+  margin-left: 30%;
+  margin-top: 100px;
+  height: 100dvh;
+}
+
+.inputBox {
+  padding: 5px;
+  display: block;
+  border: 1px solid skyblue;
+  width: 300px;
+  margin: 20px;
+}
+
+.signUpLoginButton {
+  margin: 20px;
+  width: 120px;
+  padding: 5px;
+  background-color: skyblue;
+  border: 1px solid;
+  cursor: pointer;
+}
+
+/* Logo CSS */
+.logo {
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  float: left;
+  margin-top: 3px;
+  margin-left: 10px;
+}
+
+/* Invalid Input CSS */
+.invalid-input {
+  display: block;
+  color: red;
+  margin-top: -20px;
+  margin-left: 20px;
+  font-size: small;
+}
+
+/* Product List CSS */
+.product-list {
+  text-align: center;
+  margin-top: 20px;
+  padding-bottom: 20px;
+  height: 1000dvh;
+}
+
+.product-list ul {
+  margin: 0;
+}
+
+.product-list ul li {
+  display: inline-block;      /* Changes from row to col / removes bullet points */
+  width: 150px;
+  border: 1px solid skyblue;
+  padding: 5px;
+}
+
+/* Delete Button for Products CSS */
+.deleteProductButton {
+  position: absolute;
+  margin-left: 40px;
+  width: 80px;
+  background-color: red;
+  color: white;
+  padding: 5px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+/* Search Product CSS from Home Page (aka ProductList.js) */
+.search-product-box {
+  width: 400px;
+  height: 38px;
+  margin: 20px;
+  padding-left: 30px;
+  border: solid 1px skyblue;
+}
+
+.numProductsSpan {
+  display: block;
+  padding-bottom: 10px;
+  font-size: 12px;
+}
+
+/* Don't delete this */
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+}
+
+
+
+
+/* DELETE FROM HERE??? */
+/* .App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
