@@ -215,6 +215,63 @@ app.get('/api/users', async(req, res) => {
     }
 });
 
+app.put('/update-user-info/:id', async(req, res) => {
+    try{
+        const userId = req.params.id;
+        const {name, email} = req.body;
+        const reqBodyKeys = Object.keys(req.body)       // Store all property names passed into the JSON request in a variable
+
+        if((!name || !email) || reqBodyKeys.length !== 2) {
+            console.log("Invalid request body provided.");
+            res.status(400).json({"result": "Invalid request body provided"});
+            return;
+        }
+
+        // Remove whitespaces surrounding other characters
+        const trimmedName = name.trim();
+        const trimmedEmail = email.trim();
+
+        // Regular expression to check if the name contains only letters or spaces
+        const nameRegex = /^[a-zA-Z\s]+$/;
+        if(!nameRegex.test(trimmedName)) {
+            console.log("Please enter a valid name.");
+            res.status(400).json({"result": "Please enter a valid name"});
+            return;
+        }
+
+        // Regular expression to check if the email is valid
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        if(!emailRegex.test(trimmedEmail)) {
+            console.log("Please enter a valid email address.");
+            res.status(400).json({"result": "Please enter a valid email address"});
+            return;
+        }
+
+        if(trimmedName.split(" ").length === 2 && trimmedEmail) {
+            const result = await User.findByIdAndUpdate(
+                {_id: userId},
+                {$set: {name: trimmedName, email: trimmedEmail}},
+                {new: true}
+            ).select('-password');
+            
+            if(result) {
+                console.log("User has been updated.");
+                res.status(200).json({"updated_user": result});
+            } else {
+                console.log("User not found.");
+                res.status(404).json({"result": "User not found"});
+            }
+        } else {
+            console.log("Invalid request body provided.");
+            res.status(400).json({"result": "Invalid request body provided"});
+            return;
+        }
+    } catch(e) {
+        console.log("An unexpected error occurred while updating user info.", e.message);
+        res.status(500).json({error: "An unexpected error occurred while updating user info", message: e.message})
+    }
+});
+
 app.post('/signup', async(req, res) => {
     try{
         const {name, email, password} = req.body;    // Uses object destructuring to create variables and assign them their respective values from req.body
