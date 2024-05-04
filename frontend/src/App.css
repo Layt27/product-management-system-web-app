@@ -128,6 +128,44 @@
   font-size: 12px;
 }
 
+/* Profile Page CSS */
+.profile-details-container {
+  background-color: lightgray;
+  width: 75%;
+  height: 65%;
+  margin: auto;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.profile-details-container > h3 {
+  margin: 15px 0px 5px 15px;
+}
+
+.profile-details-container > div {
+  display: block;
+  padding: 15px 15px 10px 15px;
+}
+
+.profile-details-container > button {
+  float: right;
+  padding: 5px;
+  width: 60px;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.form-group > input {
+  display: block;
+  padding: 5px;
+  height: 25px;
+  width: 350px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+
+
 /* Don't delete this */
 .App {
   display: flex;
