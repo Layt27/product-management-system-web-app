@@ -215,7 +215,7 @@ app.get('/api/users', async(req, res) => {
     }
 });
 
-app.put('/profile/:id', async(req, res) => {
+app.put('/profile/:id', verifyToken, async(req, res) => {
     try{
         const userId = req.params.id;
         const {name, email} = req.body;

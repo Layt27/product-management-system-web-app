@@ -54,7 +54,9 @@ const Profile = () => {
 
 			if(trimmedName.split(' ').length === 2 && trimmedEmail) {
 				const content = {name: trimmedName, email: trimmedEmail};
-				const res = await axios.put(`http://localhost:3005/profile/${params.id}`, content);
+				const res = await axios.put(`http://localhost:3005/profile/${params.id}`, content,
+					{headers: {Authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`}}
+				);
 				console.log("User information has been updated.");
 
 				// Reassign user details and save the new user info in the local storage
