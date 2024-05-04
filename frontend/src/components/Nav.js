@@ -28,7 +28,7 @@ const Nav = () => {
                         <li><Link to="/add-product">Add Product</Link></li>
                         {/* <li><Link to="/update">Update Product</Link></li> */}
                         <li style={{'float': 'right'}}><Link onClick={logout} to="/login">Log out ({JSON.parse(auth).name})</Link></li>
-                        <li style={{'float': 'right'}}><Link to="/profile">Profile</Link></li>
+                        <li style={{'float': 'right'}}><Link to={"/profile/" + JSON.parse(auth)._id}>Profile</Link></li>
                     </ul>
                 :
                     <ul className='nav-ul nav-right'>

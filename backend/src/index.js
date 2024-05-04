@@ -215,7 +215,7 @@ app.get('/api/users', async(req, res) => {
     }
 });
 
-app.put('/update-user-info/:id', async(req, res) => {
+app.put('/profile/:id', async(req, res) => {
     try{
         const userId = req.params.id;
         const {name, email} = req.body;
@@ -247,16 +247,16 @@ app.put('/update-user-info/:id', async(req, res) => {
             return;
         }
 
-        if(trimmedName.split(" ").length === 2 && trimmedEmail) {
-            const result = await User.findByIdAndUpdate(
+        if(trimmedName.split(' ').length === 2 && trimmedEmail) {
+            const user = await User.findByIdAndUpdate(
                 {_id: userId},
                 {$set: {name: trimmedName, email: trimmedEmail}},
                 {new: true}
             ).select('-password');
             
-            if(result) {
-                console.log("User has been updated.");
-                res.status(200).json({"updated_user": result});
+            if(user) {
+                console.log("User information has been updated.");
+                res.status(200).json({"updated_user": user});
             } else {
                 console.log("User not found.");
                 res.status(404).json({"result": "User not found"});
@@ -317,7 +317,7 @@ app.post('/signup', async(req, res) => {
             const userResult = user.toObject();
             delete userResult.password;
 
-            Jwt.sign({userResult}, jwtKey, {expiresIn: "2h"}, (err, token) => {
+            Jwt.sign({userResult}, jwtKey, {expiresIn: '2h'}, (err, token) => {
                 if(err) {
                     console.log("An unexpected error occurred while signing the Access Token.", err.message);
                     res.status(500).json({error: "An unexpected error occurred while signing the Access Token", message: err.message})
@@ -344,7 +344,7 @@ app.post('/login', async(req, res) => {
         if(email && password && reqBodyKeys.length === 2) {
             const user = await User.findOne(req.body).select('-password');          // .select('-password') excludes password field from result
             if(user) {
-                Jwt.sign({user}, jwtKey, {expiresIn: "2h"}, (err, token) => {
+                Jwt.sign({user}, jwtKey, {expiresIn: '2h'}, (err, token) => {
                     if(err) {
                         console.log("An unexpected error occurred while signing the Access Token.", err.message);
                         res.status(500).json({error: "An unexpected error occurred while signing the Access Token", message: err.message})

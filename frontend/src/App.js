@@ -22,7 +22,7 @@ function App() {
             <Route path="/add-product" element={<AddProduct />} />
             <Route path="/update/:id" element={<UpdateProduct />} />
             {/* <Route path="/logout" element={<h1>Logout Component</h1>} /> */}
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile/:id" element={<Profile />} />
           </Route>
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
