@@ -1,6 +1,6 @@
 // Imports
-import React, {useState} from 'react';
-import {useParams} from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import {useParams, useLocation} from 'react-router-dom';
 import axios from 'axios';
 
 const Profile = () => {
@@ -8,9 +8,6 @@ const Profile = () => {
 	const auth = localStorage.getItem('user');
 	// Convert the user details from local storage into an object
 	const authObject = JSON.parse(auth);
-	
-
-	const params = useParams();
 
 	// State variables
 	const [isEditing, setIsEditing] = useState(false);
@@ -18,6 +15,17 @@ const Profile = () => {
 	const [userEmail, setUserEmail] = useState(authObject.email);
 	const [userMobileNumber, setUserMobileNumber] = useState(authObject.mobileNumber);
 	const [error, setError] = useState(false);
+
+	const params = useParams();
+	const location = useLocation();
+
+	useEffect(() => {
+		setUserName(authObject.name);
+		setUserEmail(authObject.email);
+		setUserMobileNumber(authObject.mobileNumber);
+		setIsEditing(false);
+		setError(false);
+	}, [location]);
 
 	const handleEdit = () => {
 		setIsEditing(true);
