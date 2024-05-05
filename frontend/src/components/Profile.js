@@ -14,8 +14,9 @@ const Profile = () => {
 
 	// State variables
 	const [isEditing, setIsEditing] = useState(false);
-	const [userName, setUserName] = useState(JSON.parse(auth).name);
-	const [userEmail, setUserEmail] = useState(JSON.parse(auth).email);
+	const [userName, setUserName] = useState(authObject.name);
+	const [userEmail, setUserEmail] = useState(authObject.email);
+	const [userMobileNumber, setUserMobileNumber] = useState(authObject.mobileNumber);
 	const [error, setError] = useState(false);
 
 	const handleEdit = () => {
@@ -23,7 +24,7 @@ const Profile = () => {
 	};
 
 	const handleConfirm = async() => {
-		if(!userName || !userEmail) {
+		if(!userName || !userEmail || !userMobileNumber) {
 			console.log("Please do not leave any field empty.");
 			setError(true);
 			return;
@@ -35,10 +36,11 @@ const Profile = () => {
 			// Remove whitespaces surrounding other characters
 			const trimmedName = userName.trim();
 			const trimmedEmail = userEmail.trim();
+			const trimmedMobileNumber = userMobileNumber.trim();
 
-			// Regular expression to check if the name contains only letters or spaces
+			// Regular expression to check if the name is valid
 			const nameRegex = /^[a-zA-Z\s]+$/;
-			if(!nameRegex.test(trimmedName)) {
+			if(!nameRegex.test(trimmedName) || trimmedName.split(' ').length !== 2) {
 				console.log("Please enter a valid name.");
 				// res.status(400).json({"result": "Please enter a valid name"});
 				return;
@@ -52,9 +54,17 @@ const Profile = () => {
 				return;
 			}
 
-			if(trimmedName.split(' ').length === 2 && trimmedEmail) {
-				const content = {name: trimmedName, email: trimmedEmail};
-				const res = await axios.put(`http://localhost:3005/profile/${params.id}`, content,
+			// Regular expression to check if the mobile number is valid
+            const mobileNumberRegex = /^\+\d{1,3}\d{3}\d{3}\d{4}$/;
+            if(!mobileNumberRegex.test(trimmedMobileNumber)) {
+                console.log("Please enter a valid mobile number.");
+                // res.status(400).json({"result": "Please enter a valid mobile number"});
+                return;
+            }
+
+			if(trimmedName && trimmedEmail && trimmedMobileNumber) {
+				const content = {name: trimmedName, email: trimmedEmail, mobileNumber: trimmedMobileNumber};
+				await axios.put(`http://localhost:3005/profile/${params.id}`, content,
 					{headers: {Authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`}}
 				);
 				console.log("User information has been updated.");
@@ -62,6 +72,7 @@ const Profile = () => {
 				// Reassign user details and save the new user info in the local storage
 				authObject.name = userName;
 				authObject.email = userEmail;
+				authObject.mobileNumber = userMobileNumber;
 				localStorage.setItem('user', JSON.stringify(authObject));
 
 				setIsEditing(false);
@@ -79,8 +90,9 @@ const Profile = () => {
 	};
 
 	const handleCancel = () => {
-		setUserName(JSON.parse(auth).name);
-		setUserEmail(JSON.parse(auth).email);
+		setUserName(authObject.name);
+		setUserEmail(authObject.email);
+		setUserMobileNumber(authObject.mobileNumber)
 		setIsEditing(false);
 	};
 
@@ -92,20 +104,24 @@ const Profile = () => {
 			<h3>Account Details</h3>
 
 			<div className='form-group'>
-			<label>Name</label>
-			<input className='profile-input' type='text' readOnly={!isEditing} value={userName} onChange={(e) => setUserName(e.currentTarget.value)}>
-
-			</input>
+				<label>Name</label>
+				<input className='profile-input' type='text' readOnly={!isEditing}
+					value={userName} onChange={(e) => setUserName(e.currentTarget.value)}>
+				</input>
 			</div>
 
 			<div className='form-group'>
-			<label>Email</label>
-			<input className='profile-input' type='text' readOnly={!isEditing} value={userEmail} onChange={(e) => setUserEmail(e.currentTarget.value)}></input>
+				<label>Email</label>
+				<input className='profile-input' type='text' readOnly={!isEditing}
+					value={userEmail} onChange={(e) => setUserEmail(e.currentTarget.value)}>
+				</input>
 			</div>
 
 			<div className='form-group'>
-			<label>Phone number</label>
-			<input className='profile-input' type='text' readOnly={!isEditing} value='+971569876543'></input>
+				<label>Mobile number</label>
+				<input className='profile-input' type='text' readOnly={!isEditing}
+					value={userMobileNumber} onChange={(e) => setUserMobileNumber(e.currentTarget.value)}>
+				</input>
 			</div>
 
 			{

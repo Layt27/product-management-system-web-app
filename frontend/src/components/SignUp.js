@@ -8,6 +8,7 @@ const SignUp = () => {
     // These state variables are typically used to store and manage the values of input fields in a form
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
+    const [mobileNumber, setMobileNumber] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(false);
 
@@ -27,14 +28,15 @@ const SignUp = () => {
 
         setName('');
         setEmail('');
+        setMobileNumber('');
         setPassword('');
         setError(false);
     }, [location]);
     
     // Processes sign up of user. POST req done in this function
     const handleSignUp = async() => {
-        console.log(`beginning '${name}' '${email}' '${password}'`);
-        if(!name || !email || !password) {
+        console.log(`beginning '${name}' '${email}' '${mobileNumber}' '${password}'`);
+        if(!name || !email || !mobileNumber || !password) {
             console.log("Please do not leave any field empty.");
             setError(true);
             return false;
@@ -46,10 +48,11 @@ const SignUp = () => {
             // Remove whitespaces surrounding other characters
             const trimmedName = name.trim();
             const trimmedEmail = email.trim();
+            const trimmedMobileNumber = mobileNumber.trim();
 
-            // Regular expression to check if the name contains only letters or spaces
+            // Regular expression to check if the name is valid
             const nameRegex = /^[a-zA-Z\s]+$/;
-            if(!nameRegex.test(trimmedName)) {
+            if(!nameRegex.test(trimmedName) || trimmedName.split(' ').length !== 2) {
                 console.log("Please enter a valid name.");
                 // res.status(400).json({"result": "Please do not include numbers or symbols in the name field"});
                 return false;
@@ -63,10 +66,18 @@ const SignUp = () => {
                 return false;
             }
 
-            console.log(`after trim '${trimmedName}' '${trimmedEmail}' '${password}'`);
+            // Regular expression to check if the mobile number is valid
+            const mobileNumberRegex = /^\+\d{1,3}\d{3}\d{3}\d{4}$/;
+            if(!mobileNumberRegex.test(trimmedMobileNumber)) {
+                console.log("Please enter a valid mobile number.");
+                // res.status(400).json({"result": "Please enter a valid mobile number"});
+                return;
+            }
 
-            if(trimmedName.split(" ").length === 2 && trimmedEmail) {
-                const content = {name: trimmedName, email: trimmedEmail, password};
+            console.log(`after trim '${trimmedName}' '${trimmedEmail}' '${trimmedMobileNumber}' '${password}'`);
+
+            if(trimmedName && trimmedEmail && trimmedMobileNumber) {
+                const content = {name: trimmedName, email: trimmedEmail, mobileNumber: trimmedMobileNumber, password};
                 // const res = await fetch('http://localhost:3005/signup', {headers: { 'Accept': 'application/json, text/plain, /', 'Content-Type': 'application/json' },
                 // body: JSON.stringify(content), method: 'POST'});
                 // const data = await res.json();
@@ -99,6 +110,11 @@ const SignUp = () => {
                 value={email} onChange={(e) => setEmail(e.currentTarget.value)}>
             </input>
             {error && !email && <span className='invalid-input'>This field cannot be left blank</span>}
+
+            <input className='inputBox' type='text' placeholder='Enter mobile number'
+                value={mobileNumber} onChange={(e) => setMobileNumber(e.currentTarget.value)}>
+            </input>
+            {error && !mobileNumber && <span className='invalid-input'>This field cannot be left blank</span>}
 
             <input className='inputBox' type='password' placeholder='Enter password'
                 value={password} onChange={(e) => setPassword(e.currentTarget.value)}>
