@@ -218,10 +218,10 @@ app.get('/api/users', async(req, res) => {
 app.put('/profile/:id', verifyToken, async(req, res) => {
     try{
         const userId = req.params.id;
-        const {name, email} = req.body;
+        const {name, email, mobileNumber} = req.body;
         const reqBodyKeys = Object.keys(req.body)       // Store all property names passed into the JSON request in a variable
 
-        if((!name || !email) || reqBodyKeys.length !== 2) {
+        if((!name || !email || !mobileNumber) || reqBodyKeys.length !== 3) {
             console.log("Invalid request body provided.");
             res.status(400).json({"result": "Invalid request body provided"});
             return;
@@ -230,10 +230,11 @@ app.put('/profile/:id', verifyToken, async(req, res) => {
         // Remove whitespaces surrounding other characters
         const trimmedName = name.trim();
         const trimmedEmail = email.trim();
+        const trimmedMobileNumber = mobileNumber.trim();
 
-        // Regular expression to check if the name contains only letters or spaces
+        // Regular expression to check if the name is valid
         const nameRegex = /^[a-zA-Z\s]+$/;
-        if(!nameRegex.test(trimmedName)) {
+        if(!nameRegex.test(trimmedName) || trimmedName.split(' ').length !== 2) {
             console.log("Please enter a valid name.");
             res.status(400).json({"result": "Please enter a valid name"});
             return;
@@ -247,10 +248,18 @@ app.put('/profile/:id', verifyToken, async(req, res) => {
             return;
         }
 
-        if(trimmedName.split(' ').length === 2 && trimmedEmail) {
+        // Regular expression to check if the mobile number is valid
+        const mobileNumberRegex = /^\+\d{1,3}\d{3}\d{3}\d{4}$/;
+        if(!mobileNumberRegex.test(trimmedMobileNumber)) {
+            console.log("Please enter a valid mobile number.");
+            res.status(400).json({"result": "Please enter a valid mobile number"});
+            return;
+        }
+
+        if(trimmedName && trimmedEmail && trimmedMobileNumber) {
             const user = await User.findByIdAndUpdate(
                 {_id: userId},
-                {$set: {name: trimmedName, email: trimmedEmail}},
+                {$set: {name: trimmedName, email: trimmedEmail, mobileNumber: trimmedMobileNumber}},
                 {new: true}
             ).select('-password');
             
@@ -274,10 +283,10 @@ app.put('/profile/:id', verifyToken, async(req, res) => {
 
 app.post('/signup', async(req, res) => {
     try{
-        const {name, email, password} = req.body;    // Uses object destructuring to create variables and assign them their respective values from req.body
+        const {name, email, mobileNumber, password} = req.body;    // Uses object destructuring to create variables and assign them their respective values from req.body
         const reqBodyKeys = Object.keys(req.body);      // Store all property names passed into the JSON request in a variable
 
-        if((!name || !email || !password) || reqBodyKeys.length !== 3) {
+        if((!name || !email || !mobileNumber || !password) || reqBodyKeys.length !== 4) {
             console.log("Invalid request body provided.");
             res.status(400).json({"result": "Invalid request body provided"});
             return;
@@ -286,10 +295,11 @@ app.post('/signup', async(req, res) => {
         // Remove whitespaces surrounding other characters
         const trimmedName = name.trim();
         const trimmedEmail = email.trim();
+        const trimmedMobileNumber = mobileNumber.trim();
 
         // Regular expression to check if the name contains only letters or spaces
         const nameRegex = /^[a-zA-Z\s]+$/;
-        if(!nameRegex.test(trimmedName)) {
+        if(!nameRegex.test(trimmedName) || trimmedName.split(' ').length !== 2) {
             console.log("Please enter a valid name.");
             res.status(400).json({"result": "Please enter a valid name"});
             return;
@@ -303,11 +313,20 @@ app.post('/signup', async(req, res) => {
             return;
         }
 
-        if(trimmedName.split(" ").length === 2 && trimmedEmail) {
+        // Regular expression to check if the mobile number is valid
+        const mobileNumberRegex = /^\+\d{1,3}\d{3}\d{3}\d{4}$/;
+        if(!mobileNumberRegex.test(trimmedMobileNumber)) {
+            console.log("Please enter a valid mobile number.");
+            res.status(400).json({"result": "Please enter a valid mobile number"});
+            return;
+        }
+
+        if(trimmedName && trimmedEmail && trimmedMobileNumber) {
             const user = new User(
                 {
                     name: trimmedName,
                     email: trimmedEmail,
+                    mobileNumber: trimmedMobileNumber,
                     password
                 }
             );
