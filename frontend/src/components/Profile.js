@@ -21,6 +21,7 @@ const Profile = () => {
 
 	const handleEdit = () => {
 		setIsEditing(true);
+		setError(false);
 	};
 
 	const handleConfirm = async() => {
@@ -76,6 +77,10 @@ const Profile = () => {
 				localStorage.setItem('user', JSON.stringify(authObject));
 
 				setIsEditing(false);
+
+				setTimeout(() => {
+					alert("Account details updated.");
+				}, 60);
 			} else {
 				console.log("Please provide valid inputs in all fields.");
 				return false;
@@ -94,6 +99,7 @@ const Profile = () => {
 		setUserEmail(authObject.email);
 		setUserMobileNumber(authObject.mobileNumber)
 		setIsEditing(false);
+		setError(false);
 	};
 
 	return (
@@ -108,6 +114,7 @@ const Profile = () => {
 				<input className='profile-input' type='text' readOnly={!isEditing}
 					value={userName} onChange={(e) => setUserName(e.currentTarget.value)}>
 				</input>
+				{error && !userName && <span style={{'display': 'block', 'fontSize': 'small', 'color': 'red'}}>This field cannot be left blank</span>}
 			</div>
 
 			<div className='form-group'>
@@ -115,6 +122,7 @@ const Profile = () => {
 				<input className='profile-input' type='text' readOnly={!isEditing}
 					value={userEmail} onChange={(e) => setUserEmail(e.currentTarget.value)}>
 				</input>
+				{error && !userEmail && <span style={{'display': 'block', 'fontSize': 'small', 'color': 'red'}}>This field cannot be left blank</span>}
 			</div>
 
 			<div className='form-group'>
@@ -122,6 +130,7 @@ const Profile = () => {
 				<input className='profile-input' type='text' readOnly={!isEditing}
 					value={userMobileNumber} onChange={(e) => setUserMobileNumber(e.currentTarget.value)}>
 				</input>
+				{error && !userMobileNumber && <span style={{'display': 'block', 'fontSize': 'small', 'color': 'red'}}>This field cannot be left blank</span>}
 			</div>
 
 			{
