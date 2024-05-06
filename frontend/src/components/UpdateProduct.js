@@ -67,6 +67,10 @@ const UpdateProduct = () => {
                     {headers: {Authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`}}
                 );
                 if(res) {
+                    setTimeout(() => {
+                        alert("Product has been updated");
+                    }, 60);
+
                     navigate('/');
                 }
             } else {
