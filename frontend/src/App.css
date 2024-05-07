@@ -164,6 +164,11 @@
   border-radius: 5px;
 }
 
+/* Product List Buttons CSS */
+.updateProductButton {
+  margin-left: 12px;
+}
+
 
 
 /* Don't delete this */

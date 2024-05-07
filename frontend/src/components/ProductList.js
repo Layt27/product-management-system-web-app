@@ -107,7 +107,7 @@ const ProductList = () => {
                             <li>{item.company}</li>
                             <li>
                                 <button onClick={()=>handleDelete(item._id)} type='button'>Delete</button>
-                                <Link to={'/update/' + item._id}><button type='button'>Update</button></Link>
+                                <Link to={'/update/' + item._id}><button className='updateProductButton' type='button'>Update</button></Link>
                             </li>
                         </ul>
                     ))
