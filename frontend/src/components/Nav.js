@@ -15,7 +15,7 @@ const Nav = () => {
     return(
         <div>
             <a href='/'>
-                <img src='https://yt3.googleusercontent.com/ytc/AIdro_lpwLOOTumlQiiMYMHbBgJfQXVyRBGrZdTZ6NbtY-YA8wg=s900-c-k-c0x00ffffff-no-rj'
+                <img src='https://seekvectorlogo.com/wp-content/uploads/2018/01/enterprise-products-vector-logo.png'
                     alt='logo'
                     className='logo'
                 ></img>
