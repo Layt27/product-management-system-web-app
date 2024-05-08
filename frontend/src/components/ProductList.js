@@ -30,7 +30,7 @@ const ProductList = () => {
                 alert("The token has expired. Please log in again.");
                 logout();
             } else {
-                console.log("Something went wrong.", e);
+                console.log("An unexpected error occurred while retrieving products.", e.message);
             }
         }
     };
@@ -53,7 +53,7 @@ const ProductList = () => {
                 alert("The token has expired. Please log in again.");
                 logout();
             } else {
-                console.log("Something went wrong.", e);
+                console.log("An unexpected error occurred while deleting a product.", e);
             }
         }
     };
@@ -84,7 +84,7 @@ const ProductList = () => {
                 alert("The token has expired. Please log in again.");
                 logout();
             } else {
-                console.log("Something went wrong.", e);
+                console.log("An unexpected error occurred while searching for a product.", e);
             }
         }
     }
