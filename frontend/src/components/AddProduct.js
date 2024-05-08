@@ -40,22 +40,29 @@ const AddProduct = () => {
 
             // Remove whitespaces surrounding other characters
             const trimmedName = name.trim();
-            const trimmedPrice = price.trim();
+            let trimmedPrice = price.trim();
             const trimmedCategory = category.trim();
             const trimmedCompany = company.trim();
 
-            if(trimmedName && trimmedPrice && trimmedCategory && trimmedCompany) {
-                // Loop through every character for the 'price' value and reject any input other than valid numbers such as 250, 62.8, 0.99, etc.
-                for(let i = 0; i < trimmedPrice.length; i++) {
-                    if((isNaN(trimmedPrice.charAt(i)) && trimmedPrice.charAt(i) !== ".") || trimmedPrice.charAt(0) === "." || trimmedPrice.charAt(i) === " ") {
-                        console.log("Please only include valid numbers in the price field. Ex: 250, 62.8, 0.99");
-                        // res.status(400).json({"result": "Please only include valid numbers in the price field. Ex: 250, 62.8, 0.99"});
-                        return false;
-                    }
+            if(!trimmedPrice.includes('.')) {               // Check if the price does not include a decimal point
+                trimmedPrice += '.00';
+            } else {
+                const priceSplit = trimmedPrice.split('.');
+                if(priceSplit[1].length === 1) {                // Check if the price only contains one digit after the decimal point
+                    trimmedPrice += '0';
                 }
+            }
+    
+            // Regular expression to check if the price is valid
+            const priceRegex = /^\d+(\.\d{1,2})?$/;
+            if(!priceRegex.test(trimmedPrice)) {
+                console.log("Please enter a valid price.");
+                return false;
+            }
 
+            if(trimmedName && trimmedPrice && trimmedCategory && trimmedCompany) {
                 // const userId = JSON.parse(localStorage.getItem('user'))._id;
-                const content = {trimmedName, trimmedPrice, trimmedCategory, trimmedCompany};       // removed userId from the 'content' object
+                const content = {name: trimmedName, price: trimmedPrice, category: trimmedCategory, company: trimmedCompany};  // removed userId from the 'content' object
                 const res = await axios.post('http://localhost:3005/add-product', content,
                     {headers: {Authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`}}
                 );
