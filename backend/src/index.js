@@ -49,9 +49,26 @@ app.post('/add-product', verifyToken, async(req, res) => {
 
         // Remove whitespaces surrounding other characters
         const trimmedName = name.trim();
-        const trimmedPrice = price.trim();
+        let trimmedPrice = price.trim();
         const trimmedCategory = category.trim();
         const trimmedCompany = company.trim();
+
+        if(!trimmedPrice.includes('.')) {               // Check if the price does not include a decimal point
+            trimmedPrice += '.00';
+        } else {
+            const priceSplit = trimmedPrice.split('.');
+            if(priceSplit[1].length === 1) {                // Check if the price only contains one digit after the decimal point
+                trimmedPrice += '0';
+            }
+        }
+
+        // Regular expression to check if the price is valid
+        const priceRegex = /^\d+(\.\d{1,2})?$/;
+        if(!priceRegex.test(trimmedPrice)) {
+            console.log("Please enter a valid price.");
+            res.status(400).json({"result": "Please enter a valid price"});
+            return;
+        }
 
         if(trimmedName && trimmedPrice && trimmedCategory && trimmedCompany) {          // Checks if these objects exist and contain truthy values
             // Loop through every character for the 'price' value and reject any input other than valid numbers such as 250, 62.8, 0.99, etc.
@@ -117,9 +134,26 @@ app.put('/product/:id', verifyToken, async(req, res) => {
 
         // Remove whitespaces surrounding other characters
         const trimmedName = name.trim();
-        const trimmedPrice = price.trim();
+        let trimmedPrice = price.trim();
         const trimmedCategory = category.trim();
         const trimmedCompany = company.trim();
+
+        if(!trimmedPrice.includes('.')) {               // Check if the price does not include a decimal point
+            trimmedPrice += '.00';
+        } else {
+            const priceSplit = trimmedPrice.split('.');
+            if(priceSplit[1].length === 1) {                // Check if the price only contains one digit after the decimal point
+                trimmedPrice += '0';
+            }
+        }
+
+        // Regular expression to check if the price is valid
+        const priceRegex = /^\d+(\.\d{1,2})?$/;
+        if(!priceRegex.test(trimmedPrice)) {
+            console.log("Please enter a valid price.");
+            res.status(400).json({"result": "Please enter a valid price"});
+            return;
+        }
 
         if(trimmedName && trimmedPrice && trimmedCategory && trimmedCompany) {          // Checks if these objects exist and contain truthy values
             // Loop through every character for the 'price' value and reject any input other than valid numbers such as 250, 62.8, 0.99, etc.
