@@ -71,14 +71,6 @@ app.post('/add-product', verifyToken, async(req, res) => {
         }
 
         if(trimmedName && trimmedPrice && trimmedCategory && trimmedCompany) {          // Checks if these objects exist and contain truthy values
-            // Loop through every character for the 'price' value and reject any input other than valid numbers such as 250, 62.8, 0.99, etc.
-            for(let i = 0; i < trimmedPrice.length; i++) {
-                if((isNaN(trimmedPrice.charAt(i)) && trimmedPrice.charAt(i) !== ".") || trimmedPrice.charAt(0) === "." || trimmedPrice.charAt(i) === " ") {
-                    console.log("Please only include valid numbers in the price field. Ex: 250, 62.8, 0.99");
-                    res.status(400).json({"result": "Please only include valid numbers in the price field. Ex: 250, 62.8, 0.99"});
-                    return;
-                }
-            }
             // Create a product with the trimmed values for all properties
             const product = new Product(
                 {
@@ -156,14 +148,6 @@ app.put('/product/:id', verifyToken, async(req, res) => {
         }
 
         if(trimmedName && trimmedPrice && trimmedCategory && trimmedCompany) {          // Checks if these objects exist and contain truthy values
-            // Loop through every character for the 'price' value and reject any input other than valid numbers such as 250, 62.8, 0.99, etc.
-            for(let i = 0; i < trimmedPrice.length; i++) {
-                if((isNaN(trimmedPrice.charAt(i)) && trimmedPrice.charAt(i) !== ".") || trimmedPrice.charAt(0) === "." || trimmedPrice.charAt(i) === " ") {
-                    console.log("Please only include valid numbers in the price field. Ex: 250, 62.8, 0.99");
-                    res.status(400).json({"result": "Please only include valid numbers in the price field. Ex: 250, 62.8, 0.99"});
-                    return;
-                }
-            }
             const result = await Product.findByIdAndUpdate(
                 {_id: productId},
                 {$set: {name: trimmedName, price: trimmedPrice, category: trimmedCategory, company: trimmedCompany}},
