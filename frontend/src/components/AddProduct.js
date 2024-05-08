@@ -1,6 +1,6 @@
 // Imports
 import React, {useState, useEffect} from 'react';
-import { useLocation } from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
 const AddProduct = () => {
@@ -11,6 +11,12 @@ const AddProduct = () => {
     const [error, setError] = useState(false);          // Used for form validation
 
     const location = useLocation();
+    const navigate = useNavigate();
+
+    const logout = () => {
+        localStorage.clear();
+        navigate('/login');
+    };
 
     useEffect(() => {           // Runs a callback function whenever the location object changes to reset all input fields
         setProductName('');
@@ -70,7 +76,12 @@ const AddProduct = () => {
                 return false;
             }
         } catch(e) {
-            console.log("An unexpected error occurred while adding a product.", e.message);
+            if(e.response && e.response.status === 401) {
+                alert("The token has expired. Please log in again.");
+                logout();
+            } else {
+                console.log("An unexpected error occurred while adding a product.", e.message);
+            }
         }
     };
 

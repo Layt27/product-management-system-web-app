@@ -1,6 +1,6 @@
 // Imports
 import React, {useState, useEffect} from 'react';
-import {useParams, useLocation} from 'react-router-dom';
+import {useParams, useLocation, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
 const Profile = () => {
@@ -18,6 +18,12 @@ const Profile = () => {
 
 	const params = useParams();
 	const location = useLocation();
+	const navigate = useNavigate();
+
+	const logout = () => {
+        localStorage.clear();
+        navigate('/login');
+    };
 
 	useEffect(() => {
 		setUserName(authObject.name);
@@ -96,6 +102,9 @@ const Profile = () => {
 		} catch(e) {
 			if(e.response && e.response.status === 404) {
 				console.log("User not found.", e.message);
+			} else if(e.response && e.response.status === 401) {
+				alert("The token has expired. Please log in again.");
+                logout();
 			} else {
 				console.log("An unexpected error occurred while updating user information.", e.message);
 			}

@@ -13,6 +13,11 @@ const UpdateProduct = () => {
     const params = useParams();
     const navigate = useNavigate();
 
+    const logout = () => {
+        localStorage.clear();
+        navigate('/login');
+    };
+
     useEffect(() => {
         getProductDetails();
     }, []);
@@ -29,6 +34,9 @@ const UpdateProduct = () => {
         } catch(e) {
             if(e.response && e.response.status === 404) {
                 console.log("Product not found.", e.message);
+            } else if(e.response && e.response.status === 401) {
+                alert("The token has expired. Please log in again.");
+                logout();
             } else {
                 console.log("An unexpected error occurred while retrieving the product's details.", e.message);
             }
@@ -79,7 +87,12 @@ const UpdateProduct = () => {
                 return false;
             }
         } catch(e) {
-            console.log("An unexpected error occurred while updating the product's details.", e.message);
+            if(e.response && e.response.status === 401) {
+                alert("The token has expired. Please log in again.");
+                logout();
+            } else {
+                console.log("An unexpected error occurred while updating the product's details.", e.message);
+            }
         }
     };
 

@@ -1,12 +1,18 @@
 // Imports
 import React, {useState, useEffect} from 'react';
-import {useLocation, Link} from 'react-router-dom';
+import {useLocation, useNavigate, Link} from 'react-router-dom';
 import axios from 'axios';
 
 const ProductList = () => {
     const [products, setProducts] = useState([]);
 
     const location = useLocation();
+    const navigate = useNavigate();
+
+    const logout = () => {
+        localStorage.clear();
+        navigate('/login');
+    };
 
     useEffect(() => {
         getProducts();
@@ -20,7 +26,12 @@ const ProductList = () => {
             console.log("This is the data:", await res.data);
             setProducts(res.data.products);
         } catch(e) {
-            console.log("Something went wrong.", e);
+            if(e.response && e.response.status === 401) {
+                alert("The token has expired. Please log in again.");
+                logout();
+            } else {
+                console.log("Something went wrong.", e);
+            }
         }
     };
 
@@ -38,7 +49,12 @@ const ProductList = () => {
                 alert("Product has been deleted");
             }, 60);
         } catch(e) {
-            console.log("Something went wrong.", e);
+            if(e.response && e.response.status === 401) {
+                alert("The token has expired. Please log in again.");
+                logout();
+            } else {
+                console.log("Something went wrong.", e);
+            }
         }
     };
 
@@ -64,6 +80,9 @@ const ProductList = () => {
             if(e.response && e.response.status === 404) {       // Handles 404 Axios error since an Axios error object contains a 'response' property
                 console.log("No products were found.");
                 setProducts([]);
+            } else if(e.response && e.response.status === 401) {
+                alert("The token has expired. Please log in again.");
+                logout();
             } else {
                 console.log("Something went wrong.", e);
             }
