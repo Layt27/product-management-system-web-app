@@ -55,20 +55,35 @@ const Login = () => {
     };
 
     return(
-        <div className='loginDiv'>
-            <h1>Log in</h1>
+        <div className='loginDivPage'>
+            <div className='loginDivContentBox'>
+                <div className='loginDivImg'>
+                    <a href='/login'>
+                        <img src='https://seekvectorlogo.com/wp-content/uploads/2018/01/enterprise-products-vector-logo.png'
+                            alt='logo'
+                            className='loginSignUpLogo'
+                        ></img>
+                    </a>
+                </div>
 
-            <input className='inputBox' type='text' placeholder='Enter email'
-                value={email} onChange={(e) => setEmail(e.currentTarget.value)}>
-            </input>
-            {error && !email && <span className='invalid-input'>This field cannot be left blank</span>}
+                <div className='loginDivForm'>
+                    <h1>Log in</h1>
 
-            <input className='inputBox' type='password' placeholder='Enter password'
-                value={password} onChange={(e) => setPassword(e.currentTarget.value)}>
-            </input>
-            {error && !password && <span className='invalid-input'>This field cannot be left blank</span>}
+                    <label className='loginLabels'>Email</label>
+                    <input className='inputBox' type='text' placeholder='Enter email'
+                        value={email} onChange={(e) => setEmail(e.currentTarget.value)}>
+                    </input>
+                    {error && !email && <span className='invalid-input'>This field cannot be left blank</span>}
 
-            <button onClick={handleLogin} className='signUpLoginButton' type='button'>Log in</button>
+                    <label className='loginLabels'>Password</label>
+                    <input className='inputBox' type='password' placeholder='Enter password'
+                        value={password} onChange={(e) => setPassword(e.currentTarget.value)}>
+                    </input>
+                    {error && !password && <span className='invalid-input'>This field cannot be left blank</span>}
+
+                    <button onClick={handleLogin} className='signUpLoginButton' type='button'>Log in</button>
+                </div>
+            </div>
         </div>
     );
 };

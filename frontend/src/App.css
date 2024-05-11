@@ -40,26 +40,58 @@
   height: 100dvh;
 }
 
-.loginDiv {
-  margin-left: 30%;
-  margin-top: 100px;
+.loginDivPage {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
   height: 100dvh;
+}
+
+.loginDivContentBox {
+  width: 23%;
+  padding: 20px;
+}
+
+.loginDivImg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginDivForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid lightgrey;
+  border-radius: 3%;
+  padding: 25px 20px;
+}
+
+.loginLabels {
+  display: block;
+  padding-left: 3px;
+  padding-bottom: 3px;
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 500;
 }
 
 .inputBox {
   padding: 5px;
   display: block;
   border: 1px solid skyblue;
-  width: 300px;
-  margin: 20px;
+  border-radius: 4px;
 }
 
 .signUpLoginButton {
-  margin: 20px;
-  width: 120px;
+  width: 100%;
+  margin-top: 15px;
   padding: 5px;
   background-color: skyblue;
-  border: 1px solid;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
 }
 
@@ -70,6 +102,12 @@
   float: left;
   margin-top: 3px;
   margin-left: 10px;
+}
+
+.loginSignUpLogo {
+  display: block;
+  height: 120px;
+  width: 100%;
 }
 
 /* Invalid Input CSS */
@@ -169,6 +207,13 @@
 }
 
 
+/* CSS Element Selectors */
+h1 {
+  font-size: 30px;
+  font-weight: 500;
+  margin: 0;
+  margin-bottom: 10px;
+}
 
 /* Don't delete this */
 .App {
