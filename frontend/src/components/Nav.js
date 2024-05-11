@@ -20,7 +20,7 @@ const Nav = () => {
                     <a href='/'>
                         <img src='https://seekvectorlogo.com/wp-content/uploads/2018/01/enterprise-products-vector-logo.png'
                             alt='logo'
-                            className='logo'
+                            className='nav-logo'
                         ></img>
                     </a>
                     <ul className='nav-ul'>
