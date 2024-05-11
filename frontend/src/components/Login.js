@@ -55,9 +55,9 @@ const Login = () => {
     };
 
     return(
-        <div className='loginDivPage'>
-            <div className='loginDivContentBox'>
-                <div className='loginDivImg'>
+        <div className='loginSignUpDivPage'>
+            <div className='loginSignUpDivContentBox'>
+                <div className='loginSignUpDivImg'>
                     <a href='/login'>
                         <img src='https://seekvectorlogo.com/wp-content/uploads/2018/01/enterprise-products-vector-logo.png'
                             alt='logo'
@@ -66,22 +66,22 @@ const Login = () => {
                     </a>
                 </div>
 
-                <div className='loginDivForm'>
+                <div className='loginSignUpDivForm'>
                     <h1>Log in</h1>
 
-                    <label className='loginLabels'>Email</label>
+                    <label className='loginSignUpLabels'>Email</label>
                     <input className='inputBox' type='text' placeholder='Enter email'
                         value={email} onChange={(e) => setEmail(e.currentTarget.value)}>
                     </input>
                     {error && !email && <span className='invalid-input'>This field cannot be left blank</span>}
 
-                    <label className='loginLabels'>Password</label>
+                    <label className='loginSignUpLabels'>Password</label>
                     <input className='inputBox' type='password' placeholder='Enter password'
                         value={password} onChange={(e) => setPassword(e.currentTarget.value)}>
                     </input>
                     {error && !password && <span className='invalid-input'>This field cannot be left blank</span>}
 
-                    <button onClick={handleLogin} className='signUpLoginButton' type='button'>Log in</button>
+                    <button onClick={handleLogin} className='loginSignUpButton' type='button'>Log in</button>
                 </div>
             </div>
         </div>

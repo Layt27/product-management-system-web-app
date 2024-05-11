@@ -31,7 +31,7 @@
 }
 
 /* Sign Up and Login CSS // Add Product CSS */
-.signUpDiv, .addProductDiv, .updateProductDiv {
+.addProductDiv, .updateProductDiv {
   margin-left: 30%;
   height: 100dvh;
 }
@@ -40,7 +40,7 @@
   height: 100dvh;
 }
 
-.loginDivPage {
+.loginSignUpDivPage {
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
@@ -48,19 +48,19 @@
   height: 100dvh;
 }
 
-.loginDivContentBox {
+.loginSignUpDivContentBox {
   width: 23%;
   padding: 20px;
 }
 
-.loginDivImg {
+.loginSignUpDivImg {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.loginDivForm {
+.loginSignUpDivForm {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -69,7 +69,7 @@
   padding: 25px 20px;
 }
 
-.loginLabels {
+.loginSignUpLabels {
   display: block;
   padding-left: 3px;
   padding-bottom: 3px;
@@ -85,7 +85,7 @@
   border-radius: 4px;
 }
 
-.signUpLoginButton {
+.loginSignUpButton {
   width: 100%;
   margin-top: 15px;
   padding: 5px;
@@ -96,7 +96,7 @@
 }
 
 /* Logo CSS */
-.logo {
+.nav-logo {
   height: 45px;
   width: 90px;
   float: left;
