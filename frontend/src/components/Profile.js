@@ -150,11 +150,15 @@ const Profile = () => {
 
 				{
 				!isEditing ? (
-					<button id='edit-button' className='profile-buttons' onClick={handleEdit} type='button'>Edit</button>
+					<div className='profileButtonsDiv'>
+						<button onClick={handleEdit} type='button'>Edit</button>
+					</div>
 				) : (
 					<>
-					<button id='cancel-button' className='profile-buttons' onClick={handleCancel} type='button'>Cancel</button>
-					<button id='confirm-button' className='profile-buttons' onClick={handleConfirm} type='button'>Confirm</button>
+					<div className='profileButtonsDiv'>
+						<button onClick={handleConfirm} type='button'>Confirm</button>
+						<button onClick={handleCancel} type='button'>Cancel</button>
+					</div>
 					</>
 				)
 				}
