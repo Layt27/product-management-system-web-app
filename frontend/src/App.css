@@ -131,6 +131,7 @@
   margin: 20px;
   padding-left: 30px;
   border: solid 1px #00264d;
+  border-radius: 5px;
 }
 
 .plSearchProductButton {
