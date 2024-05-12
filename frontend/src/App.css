@@ -82,7 +82,7 @@
 }
 
 .inputBox {
-  padding: 5px;
+  padding: 7px;
   display: block;
   border: 1px solid skyblue;
   border-radius: 4px;
@@ -91,7 +91,7 @@
 .mainButtonTheme {
   width: 100%;
   margin-top: 15px;
-  padding: 5px;
+  padding: 7px;
   background-color: skyblue;
   border: none;
   border-radius: 8px;
