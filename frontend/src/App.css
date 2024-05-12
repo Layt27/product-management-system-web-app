@@ -31,16 +31,19 @@
 }
 
 /* Sign Up and Login CSS // Add Product CSS */
-.addProductDiv, .updateProductDiv {
-  margin-left: 30%;
-  height: 100dvh;
+.addProductDivForm, .updateProductDivForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 25px 20px;
+  /* height: 100dvh; */
 }
 
 .profileDiv {
   height: 100dvh;
 }
 
-.loginSignUpDivPage {
+.loginSignUpDivPage, .addProductDivPage, .updateProductDivPage {
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
@@ -48,7 +51,7 @@
   height: 100dvh;
 }
 
-.loginSignUpDivContentBox {
+.loginSignUpDivContentBox, .addProductDivContentBox, .updateProductDivContentBox {
   width: 23%;
   padding: 20px;
 }
@@ -69,7 +72,7 @@
   padding: 25px 20px;
 }
 
-.loginSignUpLabels {
+.loginSignUpLabels, .addProductLabels, .updateProductLabels {
   display: block;
   padding-left: 3px;
   padding-bottom: 3px;
@@ -85,7 +88,7 @@
   border-radius: 4px;
 }
 
-.loginSignUpButton {
+.loginSignUpButton, .addProductButton, .updateProductButton {
   width: 100%;
   margin-top: 15px;
   padding: 5px;
@@ -114,8 +117,8 @@
 .invalid-input {
   display: block;
   color: red;
-  margin-top: -20px;
-  margin-left: 20px;
+  /* margin-top: -20px;
+  margin-left: 20px; */
   font-size: small;
 }
 
@@ -202,9 +205,7 @@
 }
 
 /* Product List Buttons CSS */
-.updateProductButton {
-  margin-left: 12px;
-}
+
 
 
 /* CSS Element Selectors */
