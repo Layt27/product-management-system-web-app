@@ -1,6 +1,7 @@
 // Imports
 import React from 'react';
 import {Link, useNavigate} from 'react-router-dom';
+import Logo from '../images/web-app-logo-color-flipped.png';
 
 const Nav = () => {
     const auth = localStorage.getItem('user');
@@ -18,7 +19,7 @@ const Nav = () => {
                 auth ?
                     <>
                     <a href='/'>
-                        <img src='https://seekvectorlogo.com/wp-content/uploads/2018/01/enterprise-products-vector-logo.png'
+                        <img src={Logo}
                             alt='logo'
                             className='nav-logo'
                         ></img>
