@@ -94,7 +94,7 @@ const ProductList = () => {
             <h1>This is the Products page!</h1>
 
             <input className='search-product-box' type='text' placeholder='Search product'></input>
-            <button onClick={handleSearch} type='button'>Search</button>
+            <button onClick={handleSearch} className='plSearchProductButton' type='button'>Search</button>
 
             {
                 products.length > 0 ? (
@@ -125,8 +125,8 @@ const ProductList = () => {
                             <li>{item.category}</li>
                             <li>{item.company}</li>
                             <li>
-                                <button onClick={()=>handleDelete(item._id)} type='button'>Delete</button>
-                                <Link to={'/update/' + item._id}><button className='updateProductButton' type='button'>Update</button></Link>
+                                <button onClick={()=>handleDelete(item._id)} className='plDeleteProductButton' type='button'>Delete</button>
+                                <Link to={'/update/' + item._id}><button className='plUpdateProductButton' type='button'>Update</button></Link>
                             </li>
                         </ul>
                     ))
