@@ -122,7 +122,31 @@
   font-size: small;
 }
 
-/* Product List CSS */
+/* Product List Page CSS */
+.search-product-box {
+  width: 400px;
+  height: 38px;
+  margin: 20px;
+  padding-left: 30px;
+  border: solid 1px skyblue;
+}
+
+.plSearchProductButton {
+  height: 25px;
+  width: 60px;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  background-color:midnightblue;
+  cursor: pointer;
+}
+
+.numProductsSpan {
+  display: block;
+  padding-bottom: 10px;
+  font-size: 12px;
+}
+
 .product-list {
   text-align: center;
   margin-top: 20px;
@@ -136,54 +160,30 @@
 
 .product-list ul li {
   display: inline-block;      /* Changes from row to col / removes bullet points */
+  height: 28px;
   width: 150px;
   border: 1px solid skyblue;
   padding: 5px;
 }
 
-/* Product List Delete and Update Buttons CSS */
-.plDeleteProductButton {
-  height: 20px;
-  width: 40%;
-  margin-right: 10px;
-  border: none;
-  border-radius: 3px;
-  background-color:tomato;
-  cursor: pointer;
-}
-
+/* Product List Update and Delete Buttons CSS */
 .plUpdateProductButton {
   height: 20px;
   width: 40%;
+  margin-right: 10px;
   border: none;
   border-radius: 3px;
   background-color: orange;
   cursor: pointer;
 }
 
-.plSearchProductButton {
-  height: 25px;
-  width: 60px;
+.plDeleteProductButton {
+  height: 20px;
+  width: 40%;
   border: none;
   border-radius: 3px;
-  color: white;
-  background-color:midnightblue;
+  background-color:tomato;
   cursor: pointer;
-}
-
-/* Search Product CSS from Home Page (aka ProductList.js) */
-.search-product-box {
-  width: 400px;
-  height: 38px;
-  margin: 20px;
-  padding-left: 30px;
-  border: solid 1px skyblue;
-}
-
-.numProductsSpan {
-  display: block;
-  padding-bottom: 10px;
-  font-size: 12px;
 }
 
 /* Profile Page CSS */

@@ -125,8 +125,8 @@ const ProductList = () => {
                             <li>{item.category}</li>
                             <li>{item.company}</li>
                             <li>
-                                <button onClick={()=>handleDelete(item._id)} className='plDeleteProductButton' type='button'>Delete</button>
                                 <Link to={'/update/' + item._id}><button className='plUpdateProductButton' type='button'>Update</button></Link>
+                                <button onClick={()=>handleDelete(item._id)} className='plDeleteProductButton' type='button'>Delete</button>
                             </li>
                         </ul>
                     ))
