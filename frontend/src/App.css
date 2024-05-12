@@ -2,7 +2,7 @@
 .nav-ul {
   padding: 5px;
   margin: 0px;
-  background-color: skyblue;
+  background-color: #00264d;
 }
 
 .nav-right {
@@ -25,7 +25,8 @@
   /* position: fixed; */
   /* bottom: 0; */
   /* float: inline-end; */
-  background-color: skyblue;
+  color: #fff;
+  background-color: #00264d;
   width: 100%;
   text-align: center;
 }
@@ -84,7 +85,7 @@
 .inputBox {
   padding: 7px;
   display: block;
-  border: 1px solid midnightblue;
+  border: 1px solid #00264d;
   border-radius: 4px;
 }
 
@@ -93,7 +94,7 @@
   margin-top: 15px;
   padding: 7px;
   color: white;
-  background-color: midnightblue;
+  background-color: #003366;        /* Main buttons are a lighter shade to the theme of the web app */
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -129,7 +130,7 @@
   height: 38px;
   margin: 20px;
   padding-left: 30px;
-  border: solid 1px midnightblue;
+  border: solid 1px #00264d;
 }
 
 .plSearchProductButton {
@@ -138,7 +139,7 @@
   border: none;
   border-radius: 3px;
   color: white;
-  background-color:midnightblue;
+  background-color:#00264d;
   cursor: pointer;
 }
 
@@ -163,7 +164,7 @@
   display: inline-block;      /* Changes from row to col / removes bullet points */
   height: 28px;
   width: 150px;
-  border: 1px solid midnightblue;
+  border: 1px solid #00264d;
   padding: 5px;
 }
 
