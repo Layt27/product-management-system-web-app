@@ -98,31 +98,31 @@ const AddProduct = () => {
                 <div className='addProductDivForm'>
                     <h1>Add product</h1>
 
-                    <label className='addProductLabels'>Product name</label>
+                    <label className='inputFieldLabels'>Product name</label>
                     <input className='inputBox' type='text' placeholder='Enter name of product'
                         value={name} onChange={(e) => setProductName(e.currentTarget.value)}>
                     </input>
                     {error && !name && <span className='invalid-input'>This field cannot be left blank</span>}   {/* Conditional rendering statement in JSX */}
 
-                    <label className='addProductLabels'>Product price</label>
+                    <label className='inputFieldLabels'>Product price</label>
                     <input className='inputBox' type='text' placeholder='Enter price of product'
                         value={price} onChange={(e) => setProductPrice(e.currentTarget.value)}>
                     </input>
                     {error && !price && <span className='invalid-input'>This field cannot be left blank</span>}
 
-                    <label className='addProductLabels'>Product category</label>
+                    <label className='inputFieldLabels'>Product category</label>
                     <input className='inputBox' type='text' placeholder='Enter category of product'
                         value={category} onChange={(e) => setProductCategory(e.currentTarget.value)}>
                     </input>
                     {error && !category && <span className='invalid-input'>This field cannot be left blank</span>}
 
-                    <label className='addProductLabels'>Product company</label>
+                    <label className='inputFieldLabels'>Product company</label>
                     <input className='inputBox' type='text' placeholder='Enter product company'
                         value={company} onChange={(e) => setProductCompany(e.currentTarget.value)}>
                     </input>
                     {error && !company && <span className='invalid-input'>This field cannot be left blank</span>}
 
-                    <button onClick={handleAddProduct} className='loginSignUpButton' type='button'>Add product</button>
+                    <button onClick={handleAddProduct} className='mainButtonTheme' type='button'>Add product</button>
                 </div>
             </div>
         </div>

@@ -43,7 +43,7 @@
   height: 100dvh;
 }
 
-.loginSignUpDivPage, .addProductDivPage, .updateProductDivPage {
+.loginDivPage, .signUpDivPage, .addProductDivPage, .updateProductDivPage {
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
@@ -51,19 +51,19 @@
   height: 100dvh;
 }
 
-.loginSignUpDivContentBox, .addProductDivContentBox, .updateProductDivContentBox {
+.loginDivContentBox, .signUpDivContentBox, .addProductDivContentBox, .updateProductDivContentBox {
   width: 23%;
   padding: 20px;
 }
 
-.loginSignUpDivImg {
+.loginDivImg, .signUpDivImg {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.loginSignUpDivForm {
+.loginDivForm, .signUpDivForm {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -72,7 +72,7 @@
   padding: 25px 20px;
 }
 
-.loginSignUpLabels, .addProductLabels, .updateProductLabels {
+.inputFieldLabels {
   display: block;
   padding-left: 3px;
   padding-bottom: 3px;
@@ -88,7 +88,7 @@
   border-radius: 4px;
 }
 
-.loginSignUpButton, .addProductButton, .updateProductButton {
+.mainButtonTheme {
   width: 100%;
   margin-top: 15px;
   padding: 5px;
@@ -107,7 +107,7 @@
   margin-left: 10px;
 }
 
-.loginSignUpLogo {
+.loginLogo, .signUpLogo {
   display: block;
   height: 120px;
   width: 100%;

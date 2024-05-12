@@ -98,45 +98,45 @@ const SignUp = () => {
 
     // HTML code of webpage
     return(
-        <div className='loginSignUpDivPage'>
-            <div className='loginSignUpDivContentBox'>
-                <div className='loginSignUpDivImg'>
+        <div className='signUpDivPage'>
+            <div className='signUpDivContentBox'>
+                <div className='signUpDivImg'>
                     <a href='/login'>
                         <img src='https://seekvectorlogo.com/wp-content/uploads/2018/01/enterprise-products-vector-logo.png'
                             alt='logo'
-                            className='loginSignUpLogo'
+                            className='signUpLogo'
                         ></img>
                     </a>
                 </div>
 
-                <div className='loginSignUpDivForm'>
+                <div className='signUpDivForm'>
                     <h1>Create Account</h1>
 
-                    <label className='loginSignUpLabels'>Name</label>
+                    <label className='inputFieldLabels'>Name</label>
                     <input className='inputBox' type='text' placeholder='Enter first name and last name'
                         value={name} onChange={(e) => setName(e.currentTarget.value)}>
                     </input>
                     {error && !name && <span className='invalid-input'>This field cannot be left blank</span>}
 
-                    <label className='loginSignUpLabels'>Email</label>
+                    <label className='inputFieldLabels'>Email</label>
                     <input className='inputBox' type="text" placeholder='Enter email'
                         value={email} onChange={(e) => setEmail(e.currentTarget.value)}>
                     </input>
                     {error && !email && <span className='invalid-input'>This field cannot be left blank</span>}
 
-                    <label className='loginSignUpLabels'>Mobile number</label>
+                    <label className='inputFieldLabels'>Mobile number</label>
                     <input className='inputBox' type='text' placeholder='Enter mobile number'
                         value={mobileNumber} onChange={(e) => setMobileNumber(e.currentTarget.value)}>
                     </input>
                     {error && !mobileNumber && <span className='invalid-input'>This field cannot be left blank</span>}
 
-                    <label className='loginSignUpLabels'>Password</label>
+                    <label className='inputFieldLabels'>Password</label>
                     <input className='inputBox' type='password' placeholder='Enter password'
                         value={password} onChange={(e) => setPassword(e.currentTarget.value)}>
                     </input>
                     {error && !password && <span className='invalid-input'>This field cannot be left blank</span>}
 
-                    <button onClick={handleSignUp} className='loginSignUpButton' type='button'>Sign up</button>
+                    <button onClick={handleSignUp} className='mainButtonTheme' type='button'>Sign up</button>
                 </div>
             </div>
         </div>

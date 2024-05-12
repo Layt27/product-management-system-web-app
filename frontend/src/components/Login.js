@@ -55,33 +55,33 @@ const Login = () => {
     };
 
     return(
-        <div className='loginSignUpDivPage'>
-            <div className='loginSignUpDivContentBox'>
-                <div className='loginSignUpDivImg'>
+        <div className='loginDivPage'>
+            <div className='loginDivContentBox'>
+                <div className='loginDivImg'>
                     <a href='/login'>
                         <img src='https://seekvectorlogo.com/wp-content/uploads/2018/01/enterprise-products-vector-logo.png'
                             alt='logo'
-                            className='loginSignUpLogo'
+                            className='loginLogo'
                         ></img>
                     </a>
                 </div>
 
-                <div className='loginSignUpDivForm'>
+                <div className='loginDivForm'>
                     <h1>Log in</h1>
 
-                    <label className='loginSignUpLabels'>Email</label>
+                    <label className='inputFieldLabels'>Email</label>
                     <input className='inputBox' type='text' placeholder='Enter email'
                         value={email} onChange={(e) => setEmail(e.currentTarget.value)}>
                     </input>
                     {error && !email && <span className='invalid-input'>This field cannot be left blank</span>}
 
-                    <label className='loginSignUpLabels'>Password</label>
+                    <label className='inputFieldLabels'>Password</label>
                     <input className='inputBox' type='password' placeholder='Enter password'
                         value={password} onChange={(e) => setPassword(e.currentTarget.value)}>
                     </input>
                     {error && !password && <span className='invalid-input'>This field cannot be left blank</span>}
 
-                    <button onClick={handleLogin} className='loginSignUpButton' type='button'>Log in</button>
+                    <button onClick={handleLogin} className='mainButtonTheme' type='button'>Log in</button>
                 </div>
             </div>
         </div>

@@ -109,31 +109,31 @@ const UpdateProduct = () => {
                 <div className='updateProductDivForm'>
                     <h1>Update product</h1>
 
-                    <label className='updateProductLabels'>Product name</label>
+                    <label className='inputFieldLabels'>Product name</label>
                     <input className='inputBox' type='text' placeholder='Enter name of product'
                         value={name} onChange={(e) => setProductName(e.currentTarget.value)}>
                     </input>
                     {error && !name && <span className='invalid-input'>This field cannot be left blank</span>}
 
-                    <label className='updateProductLabels'>Product price</label>
+                    <label className='inputFieldLabels'>Product price</label>
                     <input className='inputBox' type='text' placeholder='Enter price of product'
                         value={price} onChange={(e) => setProductPrice(e.currentTarget.value)}>
                     </input>
                     {error && !price && <span className='invalid-input'>This field cannot be left blank</span>}
 
-                    <label className='updateProductLabels'>Product category</label>
+                    <label className='inputFieldLabels'>Product category</label>
                     <input className='inputBox' type='text' placeholder='Enter category of product'
                         value={category} onChange={(e) => setProductCategory(e.currentTarget.value)}>
                     </input>
                     {error && !category && <span className='invalid-input'>This field cannot be left blank</span>}
 
-                    <label className='updateProductLabels'>Product company</label>
+                    <label className='inputFieldLabels'>Product company</label>
                     <input className='inputBox' type='text' placeholder='Enter product company'
                         value={company} onChange={(e) => setProductCompany(e.currentTarget.value)}>
                     </input>
                     {error && !company && <span className='invalid-input'>This field cannot be left blank</span>}
 
-                    <button onClick={handleUpdateProduct} className='loginSignUpButton' type='button'>Update product</button>
+                    <button onClick={handleUpdateProduct} className='mainButtonTheme' type='button'>Update product</button>
                 </div>
             </div>
         </div>
