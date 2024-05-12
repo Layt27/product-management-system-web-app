@@ -84,7 +84,7 @@
 .inputBox {
   padding: 7px;
   display: block;
-  border: 1px solid skyblue;
+  border: 1px solid midnightblue;
   border-radius: 4px;
 }
 
@@ -92,7 +92,8 @@
   width: 100%;
   margin-top: 15px;
   padding: 7px;
-  background-color: skyblue;
+  color: white;
+  background-color: midnightblue;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -128,7 +129,7 @@
   height: 38px;
   margin: 20px;
   padding-left: 30px;
-  border: solid 1px skyblue;
+  border: solid 1px midnightblue;
 }
 
 .plSearchProductButton {
@@ -162,7 +163,7 @@
   display: inline-block;      /* Changes from row to col / removes bullet points */
   height: 28px;
   width: 150px;
-  border: 1px solid skyblue;
+  border: 1px solid midnightblue;
   padding: 5px;
 }
 
