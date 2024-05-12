@@ -2,6 +2,7 @@
 import React, {useState, useEffect} from 'react';
 import {useNavigate, useLocation} from 'react-router-dom';
 import axios from 'axios';
+import Logo from '../images/web-app-logo.png';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -59,7 +60,7 @@ const Login = () => {
             <div className='loginDivContentBox'>
                 <div className='loginDivImg'>
                     <a href='/login'>
-                        <img src='https://seekvectorlogo.com/wp-content/uploads/2018/01/enterprise-products-vector-logo.png'
+                        <img src={Logo}
                             alt='logo'
                             className='loginLogo'
                         ></img>

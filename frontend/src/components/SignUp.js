@@ -2,6 +2,7 @@
 import React, {useState, useEffect} from 'react';              // `useState` is a React hook that allows functional components to have state
 import {useNavigate, useLocation} from 'react-router-dom';
 import axios from 'axios';
+import Logo from '../images/web-app-logo.png';
 
 const SignUp = () => {
     // `useState` hook creates three state variables (name, email, and password) and their corresponding setter functions (setName, setEmail, and setPassword)
@@ -102,7 +103,7 @@ const SignUp = () => {
             <div className='signUpDivContentBox'>
                 <div className='signUpDivImg'>
                     <a href='/login'>
-                        <img src='https://seekvectorlogo.com/wp-content/uploads/2018/01/enterprise-products-vector-logo.png'
+                        <img src={Logo}
                             alt='logo'
                             className='signUpLogo'
                         ></img>
