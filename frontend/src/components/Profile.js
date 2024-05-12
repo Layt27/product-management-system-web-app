@@ -120,48 +120,46 @@ const Profile = () => {
 	};
 
 	return (
-		<div className='profileDiv'>
-		<h1>This is the Profile page!</h1>
+		<div className='profileDivPage'>
+			<div className='profile-details-container'>
+				<h3>Account Details</h3>
 
-		<div className='profile-details-container'>
-			<h3>Account Details</h3>
+				<div className='form-group'>
+					<label className='inputFieldLabels'>Name</label>
+					<input className='profile-input' type='text' readOnly={!isEditing}
+						value={userName} onChange={(e) => setUserName(e.currentTarget.value)}>
+					</input>
+					{error && !userName && <span className='invalid-input'>This field cannot be left blank</span>}
+				</div>
 
-			<div className='form-group'>
-				<label>Name</label>
-				<input className='profile-input' type='text' readOnly={!isEditing}
-					value={userName} onChange={(e) => setUserName(e.currentTarget.value)}>
-				</input>
-				{error && !userName && <span style={{'display': 'block', 'fontSize': 'small', 'color': 'red'}}>This field cannot be left blank</span>}
+				<div className='form-group'>
+					<label className='inputFieldLabels'>Email</label>
+					<input className='profile-input' type='text' readOnly={!isEditing}
+						value={userEmail} onChange={(e) => setUserEmail(e.currentTarget.value)}>
+					</input>
+					{error && !userEmail && <span className='invalid-input'>This field cannot be left blank</span>}
+				</div>
+
+				<div className='form-group'>
+					<label className='inputFieldLabels'>Mobile number</label>
+					<input className='profile-input' type='text' readOnly={!isEditing}
+						value={userMobileNumber} onChange={(e) => setUserMobileNumber(e.currentTarget.value)}>
+					</input>
+					{error && !userMobileNumber && <span className='invalid-input'>This field cannot be left blank</span>}
+				</div>
+
+				{
+				!isEditing ? (
+					<button id='edit-button' className='profile-buttons' onClick={handleEdit} type='button'>Edit</button>
+				) : (
+					<>
+					<button id='cancel-button' className='profile-buttons' onClick={handleCancel} type='button'>Cancel</button>
+					<button id='confirm-button' className='profile-buttons' onClick={handleConfirm} type='button'>Confirm</button>
+					</>
+				)
+				}
+
 			</div>
-
-			<div className='form-group'>
-				<label>Email</label>
-				<input className='profile-input' type='text' readOnly={!isEditing}
-					value={userEmail} onChange={(e) => setUserEmail(e.currentTarget.value)}>
-				</input>
-				{error && !userEmail && <span style={{'display': 'block', 'fontSize': 'small', 'color': 'red'}}>This field cannot be left blank</span>}
-			</div>
-
-			<div className='form-group'>
-				<label>Mobile number</label>
-				<input className='profile-input' type='text' readOnly={!isEditing}
-					value={userMobileNumber} onChange={(e) => setUserMobileNumber(e.currentTarget.value)}>
-				</input>
-				{error && !userMobileNumber && <span style={{'display': 'block', 'fontSize': 'small', 'color': 'red'}}>This field cannot be left blank</span>}
-			</div>
-
-			{
-			!isEditing ? (
-				<button id='edit-button' className='profile-buttons' onClick={handleEdit} type='button'>Edit</button>
-			) : (
-				<>
-				<button id='cancel-button' className='profile-buttons' onClick={handleCancel} type='button'>Cancel</button>
-				<button id='confirm-button' className='profile-buttons' onClick={handleConfirm} type='button'>Confirm</button>
-				</>
-			)
-			}
-
-		</div>
 		</div>
 	);
 };

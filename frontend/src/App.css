@@ -40,11 +40,7 @@
   /* height: 100dvh; */
 }
 
-.profileDiv {
-  height: 100dvh;
-}
-
-.loginDivPage, .signUpDivPage, .addProductDivPage, .updateProductDivPage {
+.loginDivPage, .signUpDivPage, .addProductDivPage, .updateProductDivPage, .profileDivPage {
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
@@ -191,38 +187,44 @@
 
 /* Profile Page CSS */
 .profile-details-container {
-  background-color: lightgray;
-  width: 75%;
-  height: 73%;
-  margin: auto;
-  padding: 10px;
-  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  background-color:#f2f2f2;
+  width: 50%;
+  height: 75%;
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 20px;
 }
 
 .profile-details-container > h3 {
-  margin: 15px 0px 5px 15px;
+  padding-left: 10px;
 }
 
 .profile-details-container > div {
-  display: block;
-  padding: 15px 15px 10px 15px;
+  padding: 0px 10px;
 }
 
 .profile-details-container > button {
-  float: right;
-  padding: 5px;
+  padding: 7px;
   width: 60px;
   margin-top: 10px;
   margin-right: 10px;
+  background-color: #d9d9d9;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.form-group {
+  margin-bottom: 20px;
 }
 
 .form-group > input {
-  display: block;
   padding: 5px;
   height: 25px;
   width: 350px;
-  margin-top: 10px;
-  border-radius: 5px;
+  border-radius: 4px;
 }
 
 /* CSS Element Selectors */
