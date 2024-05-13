@@ -54,7 +54,7 @@ Before you begin, you will need to have the following installed and configured o
 
     ```.env
         # Configuration Settings
-        PORT = <port number>
+        PORT = <custom port number>
         CONNECTION = <connection string>
     ```
 ## Getting Started
