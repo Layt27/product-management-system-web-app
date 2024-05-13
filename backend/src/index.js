@@ -15,7 +15,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(cors({origin: '*'}));
 
 const Jwt = require('jsonwebtoken');
-const jwtKey = 'e-comm';
+const jwtKey = 'pm-s-wa';
 
 
 // Routes / Endpoints
