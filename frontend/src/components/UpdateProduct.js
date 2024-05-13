@@ -31,6 +31,7 @@ const UpdateProduct = () => {
             setProductPrice(res.data.result.price);
             setProductCategory(res.data.result.category);
             setProductCompany(res.data.result.company);
+
         } catch(e) {
             if(e.response && e.response.status === 404) {
                 console.log("Product not found.", e.message);
@@ -48,7 +49,6 @@ const UpdateProduct = () => {
 
     const handleUpdateProduct = async() => {
         if(!name || !price || !category || !company) {
-            console.log("Please do not leave any field empty.");
             setError(true);
             return false;
         } else {
@@ -74,7 +74,6 @@ const UpdateProduct = () => {
             // Regular expression to check if the price is valid
             const priceRegex = /^\d+(\.\d{1,2})?$/;
             if(!priceRegex.test(trimmedPrice)) {
-                console.log("Please enter a valid price.");
                 alert("Please enter a valid price.");
                 return false;
             }
@@ -86,15 +85,13 @@ const UpdateProduct = () => {
                 );
                 if(res) {
                     setTimeout(() => {
-                        alert("Product has been updated");
+                        alert("Product has been updated.");
                     }, 60);
 
                     navigate('/');
                 }
             } else {
-                console.log("Please provide valid input in all fields.");
                 alert("Please provide valid input in all fields.");
-                // res.status(400).json({"result": "Please provide valid inputs in all fields"});
                 return false;
             }
         } catch(e) {

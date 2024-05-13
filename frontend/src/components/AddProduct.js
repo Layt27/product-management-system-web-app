@@ -28,7 +28,6 @@ const AddProduct = () => {
 
     const handleAddProduct = async() => {
         if(!name || !price || !category || !company) {      // Form validation to check for empty input fields after button click
-            console.log("Please do not leave any field empty.");
             setError(true);
             return false;
         } else {
@@ -36,8 +35,6 @@ const AddProduct = () => {
         }
 
         try{
-            console.log(name, price, category, company);
-
             // Remove whitespaces surrounding other characters
             const trimmedName = name.trim();
             let trimmedPrice = price.trim();
@@ -56,18 +53,15 @@ const AddProduct = () => {
             // Regular expression to check if the price is valid
             const priceRegex = /^\d+(\.\d{1,2})?$/;
             if(!priceRegex.test(trimmedPrice)) {
-                console.log("Please enter a valid price.");
                 alert("Please enter a valid price.");
                 return false;
             }
 
             if(trimmedName && trimmedPrice && trimmedCategory && trimmedCompany) {
-                // const userId = JSON.parse(localStorage.getItem('user'))._id;
-                const content = {name: trimmedName, price: trimmedPrice, category: trimmedCategory, company: trimmedCompany};  // removed userId from the 'content' object
-                const res = await axios.post('http://localhost:3005/add-product', content,
+                const content = {name: trimmedName, price: trimmedPrice, category: trimmedCategory, company: trimmedCompany};
+                await axios.post('http://localhost:3005/add-product', content,
                     {headers: {Authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`}}
                 );
-                console.log("This is the data:", await res.data);
 
                 // Clear input fields
                 setProductName('');
@@ -76,12 +70,10 @@ const AddProduct = () => {
                 setProductCompany('');
 
                 setTimeout(() => {          // Delay the alert by 60 milliseconds
-                    alert("Product added to product list");
+                    alert("Product added to product list.");
                 }, 60);
             } else {
-                console.log("Please provide valid inputs in all fields.");
                 alert("Please provide valid inputs in all fields.");
-                // res.status(400).json({"result": "Please provide valid inputs in all fields"});
                 return false;
             }
         } catch(e) {

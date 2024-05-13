@@ -25,8 +25,8 @@ const ProductList = () => {
             const res = await axios.get('http://localhost:3005/products',
                 {headers: {Authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`}}   // Sends the token to the Authorization header to authenticate requests
             );
-            console.log("This is the data:", await res.data);
             setProducts(res.data.products);
+
         } catch(e) {
             if(e.response && e.response.status === 401) {
                 alert("The token has expired. Please log in again.");
@@ -40,23 +40,20 @@ const ProductList = () => {
 
     const handleDelete = async(productId) => {
         try{
-            console.log(productId);
             const res = await axios.delete(`http://localhost:3005/product/${productId}`,
                 {headers: {Authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`}}
             );
-            console.log("This is the DELETE req data:", await res.data);
-            
             getProducts();
 
             setTimeout(() => {
-                alert("Product has been deleted");
+                alert("Product has been deleted.");
             }, 60);
         } catch(e) {
             if(e.response && e.response.status === 401) {
                 alert("The token has expired. Please log in again.");
                 logout();
             } else {
-                console.log("An unexpected error occurred while deleting a product.", e);
+                console.log("An unexpected error occurred while deleting a product.", e.message);
                 alert("An unexpected error occurred while deleting a product.");
             }
         }
@@ -78,17 +75,15 @@ const ProductList = () => {
             } else {
                 getProducts();
             }
-            console.log("Retrieved search results.");
 
         } catch(e) {
             if(e.response && e.response.status === 404) {       // Handles 404 Axios error since an Axios error object contains a 'response' property
-                console.log("No products were found.");
                 setProducts([]);
             } else if(e.response && e.response.status === 401) {
                 alert("The token has expired. Please log in again.");
                 logout();
             } else {
-                console.log("An unexpected error occurred while searching for a product.", e);
+                console.log("An unexpected error occurred while searching for a product.", e.message);
                 alert("An unexpected error occurred while searching for a product.");
             }
         }
@@ -96,7 +91,7 @@ const ProductList = () => {
 
     return(
         <div className='product-list'>
-            <h1>This is the Products page!</h1>
+            <h1>Product catalog</h1>
 
             <input className='search-product-box' type='text' placeholder='Search product'
                 value={searchKey} onChange={(e) => setSearchKey(e.currentTarget.value)}>
@@ -109,13 +104,11 @@ const ProductList = () => {
                     <span className='numProductsSpan'>Number of products: {products.length}</span>
                 ) : (
                     <></>
-                    // <span className='numProductsSpan'>Results found: {products.length}</span>
                 )
             }
 
             {/* Static list headings */}
             <ul>
-                {/* <li>S. No.</li> */}
                 <li>Name</li>
                 <li>Price</li>
                 <li>Category</li>
@@ -127,7 +120,6 @@ const ProductList = () => {
                 products.length > 0 ? (
                     products.map((item, index) => (
                         <ul key={item._id}>
-                            {/* <li>{index + 1}</li> */}
                             <li>{item.name}</li>
                             <li>{item.price}</li>
                             <li>{item.category}</li>

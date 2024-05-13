@@ -40,7 +40,6 @@ const Profile = () => {
 
 	const handleConfirm = async() => {
 		if(!userName || !userEmail || !userMobileNumber) {
-			console.log("Please do not leave any field empty.");
 			setError(true);
 			return;
 		} else {
@@ -56,27 +55,21 @@ const Profile = () => {
 			// Regular expression to check if the name is valid
 			const nameRegex = /^[a-zA-Z\s]+$/;
 			if(!nameRegex.test(trimmedName) || trimmedName.split(' ').length !== 2) {
-				console.log("Please enter a valid name.");
 				alert("Please enter a valid name.");
-				// res.status(400).json({"result": "Please enter a valid name"});
 				return;
 			}
 
 			// Regular expression to check if the email is valid
 			const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 			if(!emailRegex.test(trimmedEmail)) {
-				console.log("Please enter a valid email address.");
 				alert("Please enter a valid email address.");
-				// res.status(400).json({"result": "Please enter a valid email address"});
 				return;
 			}
 
 			// Regular expression to check if the mobile number is valid
             const mobileNumberRegex = /^\+\d{1,3}\d{3}\d{3}\d{4}$/;
             if(!mobileNumberRegex.test(trimmedMobileNumber)) {
-                console.log("Please enter a valid mobile number.");
 				alert("Please enter a valid mobile number.");
-                // res.status(400).json({"result": "Please enter a valid mobile number"});
                 return;
             }
 
@@ -85,7 +78,6 @@ const Profile = () => {
 				await axios.put(`http://localhost:3005/profile/${params.id}`, content,
 					{headers: {Authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`}}
 				);
-				console.log("User information has been updated.");
 
 				// Reassign user details and save the new user info in the local storage
 				authObject.name = userName;
@@ -99,7 +91,6 @@ const Profile = () => {
 					alert("Account details updated.");
 				}, 60);
 			} else {
-				console.log("Please provide valid inputs in all fields.");
 				alert("Please provide valid inputs in all fields.");
 				return false;
 			}

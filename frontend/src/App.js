@@ -15,20 +15,19 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Nav />       {/* Includes nav bar HTML from Nav.js file */}
+        <Nav />
         <Routes>
           <Route element={<PrivateComponent />}>
             <Route path="/" element={<ProductList />} />
             <Route path="/add-product" element={<AddProduct />} />
             <Route path="/update/:id" element={<UpdateProduct />} />
-            {/* <Route path="/logout" element={<h1>Logout Component</h1>} /> */}
             <Route path="/profile/:id" element={<Profile />} />
           </Route>
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
-      <Footer />     {/* Includes footer HTML from Footer.js file */}
+      <Footer />
     </div>
   );
 }
