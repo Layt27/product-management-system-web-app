@@ -34,11 +34,13 @@ const UpdateProduct = () => {
         } catch(e) {
             if(e.response && e.response.status === 404) {
                 console.log("Product not found.", e.message);
+                alert("Product not found.");
             } else if(e.response && e.response.status === 401) {
                 alert("The token has expired. Please log in again.");
                 logout();
             } else {
                 console.log("An unexpected error occurred while retrieving the product's details.", e.message);
+                alert("An unexpected error occurred while retrieving the product's details.");
             }
         }
         
@@ -73,6 +75,7 @@ const UpdateProduct = () => {
             const priceRegex = /^\d+(\.\d{1,2})?$/;
             if(!priceRegex.test(trimmedPrice)) {
                 console.log("Please enter a valid price.");
+                alert("Please enter a valid price.");
                 return false;
             }
 
@@ -90,6 +93,7 @@ const UpdateProduct = () => {
                 }
             } else {
                 console.log("Please provide valid input in all fields.");
+                alert("Please provide valid input in all fields.");
                 // res.status(400).json({"result": "Please provide valid inputs in all fields"});
                 return false;
             }
@@ -99,6 +103,7 @@ const UpdateProduct = () => {
                 logout();
             } else {
                 console.log("An unexpected error occurred while updating the product's details.", e.message);
+                alert("An unexpected error occurred while updating the product's details.");
             }
         }
     };

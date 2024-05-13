@@ -31,6 +31,7 @@ const ProductList = () => {
                 logout();
             } else {
                 console.log("An unexpected error occurred while retrieving products.", e.message);
+                alert("An unexpected error occurred while retrieving products.");
             }
         }
     };
@@ -54,6 +55,7 @@ const ProductList = () => {
                 logout();
             } else {
                 console.log("An unexpected error occurred while deleting a product.", e);
+                alert("An unexpected error occurred while deleting a product.");
             }
         }
     };
@@ -85,6 +87,7 @@ const ProductList = () => {
                 logout();
             } else {
                 console.log("An unexpected error occurred while searching for a product.", e);
+                alert("An unexpected error occurred while searching for a product.");
             }
         }
     }

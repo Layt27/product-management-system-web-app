@@ -25,7 +25,6 @@ const Login = () => {
 
     const handleLogin = async() => {
         if(!email || !password) {
-            console.log("Please do not leave any field empty.");
             setError(true);
             return;
         } else {
@@ -33,24 +32,20 @@ const Login = () => {
         }
 
         try{
-            console.log(email, password);
-
             const content = {email, password};
             const res = await axios.post('http://localhost:3005/login', content);
-            console.log("This is the data:", await res.data);
             if(res.data.auth) {
                 localStorage.setItem('user', JSON.stringify(res.data.user));
                 localStorage.setItem('token', JSON.stringify(res.data.auth));
                 navigate('/');
             }
-            // else {
-            //     console.log("Please enter the correct details.");
-            // }
         } catch(e) {
             if(e.response && e.response.status === 404) {
                 console.log("User not found.", e.message);
+                alert("User not found.");
             } else {
                 console.log("An unexpected error occurred while logging in.", e.message);
+                alert("An unexpected error occurred while logging in.");
             }
         }
     };

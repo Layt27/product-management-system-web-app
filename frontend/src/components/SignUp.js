@@ -36,9 +36,7 @@ const SignUp = () => {
     
     // Processes sign up of user. POST req done in this function
     const handleSignUp = async() => {
-        console.log(`beginning '${name}' '${email}' '${mobileNumber}' '${password}'`);
         if(!name || !email || !mobileNumber || !password) {
-            console.log("Please do not leave any field empty.");
             setError(true);
             return false;
         } else {
@@ -54,46 +52,37 @@ const SignUp = () => {
             // Regular expression to check if the name is valid
             const nameRegex = /^[a-zA-Z\s]+$/;
             if(!nameRegex.test(trimmedName) || trimmedName.split(' ').length !== 2) {
-                console.log("Please enter a valid name.");
-                // res.status(400).json({"result": "Please do not include numbers or symbols in the name field"});
+                alert("Please enter a valid name.");
                 return false;
             }
 
             // Regular expression to check if the email is valid
             const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
             if(!emailRegex.test(trimmedEmail)) {
-                console.log("Please enter a valid email address.");
-                // res.status(400).json({"result": "Please enter a valid email address"});
+                alert("Please enter a valid email address.");
                 return false;
             }
 
             // Regular expression to check if the mobile number is valid
             const mobileNumberRegex = /^\+\d{1,3}\d{3}\d{3}\d{4}$/;
             if(!mobileNumberRegex.test(trimmedMobileNumber)) {
-                console.log("Please enter a valid mobile number.");
-                // res.status(400).json({"result": "Please enter a valid mobile number"});
-                return;
+                alert("Please enter a valid mobile number.");
+                return false;
             }
-
-            console.log(`after trim '${trimmedName}' '${trimmedEmail}' '${trimmedMobileNumber}' '${password}'`);
 
             if(trimmedName && trimmedEmail && trimmedMobileNumber) {
                 const content = {name: trimmedName, email: trimmedEmail, mobileNumber: trimmedMobileNumber, password};
-                // const res = await fetch('http://localhost:3005/signup', {headers: { 'Accept': 'application/json, text/plain, /', 'Content-Type': 'application/json' },
-                // body: JSON.stringify(content), method: 'POST'});
-                // const data = await res.json();
                 const res = await axios.post('http://localhost:3005/signup', content);      // POST req to backend with `content` as req body
-                console.log("This is the data:", await res.data);
                 localStorage.setItem('user', JSON.stringify(res.data.userResult));          // Stores user sign up data to local storage
                 localStorage.setItem('token', JSON.stringify(res.data.auth));          // Stores token to local storage
                 navigate('/');          // Redirect user to home page after signing up
             } else {
-                console.log("Please provide valid inputs in all fields.");
-                // res.status(400).json({"result": "Please provide valid inputs in all fields"});
+                alert("Please provide valid inputs in all fields.");
                 return false;
             }
         } catch(e) {
             console.log("An unexpected error occurred while signing up.", e.message);
+            alert("An unexpected error occurred while signing up.");
         }
     };
 

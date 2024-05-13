@@ -57,6 +57,7 @@ const Profile = () => {
 			const nameRegex = /^[a-zA-Z\s]+$/;
 			if(!nameRegex.test(trimmedName) || trimmedName.split(' ').length !== 2) {
 				console.log("Please enter a valid name.");
+				alert("Please enter a valid name.");
 				// res.status(400).json({"result": "Please enter a valid name"});
 				return;
 			}
@@ -65,6 +66,7 @@ const Profile = () => {
 			const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 			if(!emailRegex.test(trimmedEmail)) {
 				console.log("Please enter a valid email address.");
+				alert("Please enter a valid email address.");
 				// res.status(400).json({"result": "Please enter a valid email address"});
 				return;
 			}
@@ -73,6 +75,7 @@ const Profile = () => {
             const mobileNumberRegex = /^\+\d{1,3}\d{3}\d{3}\d{4}$/;
             if(!mobileNumberRegex.test(trimmedMobileNumber)) {
                 console.log("Please enter a valid mobile number.");
+				alert("Please enter a valid mobile number.");
                 // res.status(400).json({"result": "Please enter a valid mobile number"});
                 return;
             }
@@ -97,16 +100,19 @@ const Profile = () => {
 				}, 60);
 			} else {
 				console.log("Please provide valid inputs in all fields.");
+				alert("Please provide valid inputs in all fields.");
 				return false;
 			}
 		} catch(e) {
 			if(e.response && e.response.status === 404) {
 				console.log("User not found.", e.message);
+				alert("User not found.");
 			} else if(e.response && e.response.status === 401) {
 				alert("The token has expired. Please log in again.");
                 logout();
 			} else {
 				console.log("An unexpected error occurred while updating user information.", e.message);
+				alert("An unexpected error occurred while updating user information.");
 			}
 		}
 	};

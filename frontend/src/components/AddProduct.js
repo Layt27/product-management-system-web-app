@@ -57,6 +57,7 @@ const AddProduct = () => {
             const priceRegex = /^\d+(\.\d{1,2})?$/;
             if(!priceRegex.test(trimmedPrice)) {
                 console.log("Please enter a valid price.");
+                alert("Please enter a valid price.");
                 return false;
             }
 
@@ -79,6 +80,7 @@ const AddProduct = () => {
                 }, 60);
             } else {
                 console.log("Please provide valid inputs in all fields.");
+                alert("Please provide valid inputs in all fields.");
                 // res.status(400).json({"result": "Please provide valid inputs in all fields"});
                 return false;
             }
@@ -88,6 +90,7 @@ const AddProduct = () => {
                 logout();
             } else {
                 console.log("An unexpected error occurred while adding a product.", e.message);
+                alert("An unexpected error occurred while adding a product.");
             }
         }
     };
