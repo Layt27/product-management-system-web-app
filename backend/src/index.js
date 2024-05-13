@@ -1,17 +1,17 @@
 // Imports
 const express = require('express');
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');                   // CC
+const dotenv = require('dotenv');
 const cors = require('cors');
 const Product = require('./models/Product');
 const User = require('./models/User');
-dotenv.config();            // CC
+dotenv.config();
 
 const app = express();
-mongoose.set('strictQuery', false);             // CC
+mongoose.set('strictQuery', false);
 
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));             // CC
+app.use(express.urlencoded({extended: true}));
 app.use(cors({origin: '*'}));
 
 const Jwt = require('jsonwebtoken');
@@ -195,7 +195,7 @@ app.get('/search/:key', verifyToken, async(req, res) => {            // Query Fi
         const escapedKey = req.params.key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
         const result = await Product.find({
-            "$or": [
+            '$or': [
                 { name: { $regex: escapedKey, $options: 'i' } },        // $options: 'i' used for case-insensitive search
                 { price: { $regex: escapedKey, $options: 'i' } },
                 { category: { $regex: escapedKey, $options: 'i' } },
@@ -208,7 +208,7 @@ app.get('/search/:key', verifyToken, async(req, res) => {            // Query Fi
             res.status(200).json({result});
         } else {
             console.log("No product(s) found by search.");
-            res.status(404).json({"result": "No product(s) found"});
+            res.status(404).json({"result": "No product(s) found by search"});
         }
     } catch(e) {
         console.log("An unexpected error occurred while searching for a product.", e.message);
@@ -217,7 +217,7 @@ app.get('/search/:key', verifyToken, async(req, res) => {            // Query Fi
 });
 
 // ------------------------------------------------------- Users API -------------------------------------------------------
-app.get('/api/users', async(req, res) => {
+app.get('/api/users', async(req, res) => {        // Used for testing purposes and not part of web app
     try{
         const allUsers = await User.find();
         if(allUsers.length > 0) {
@@ -446,7 +446,7 @@ function verifyToken(req, res, next) {
 }
 
 
-// Run Server             // CC all below
+// Run Server
 const PORT = process.env.PORT || 3004;
 const CONNECTION = process.env.CONNECTION;
 const start = async() => {
