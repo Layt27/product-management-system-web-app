@@ -5,6 +5,7 @@ import axios from 'axios';
 
 const ProductList = () => {
     const [products, setProducts] = useState([]);
+    const [searchKey, setSearchKey] = useState('');
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -15,6 +16,7 @@ const ProductList = () => {
     };
 
     useEffect(() => {
+        setSearchKey('');
         getProducts();
     }, [location]);
 
@@ -60,9 +62,9 @@ const ProductList = () => {
         }
     };
 
-    const handleSearch = async(event) => {
+    const handleSearch = async() => {
         try{
-            const key = event.target.previousSibling.value;
+            const key = searchKey;
             const trimmedKey = key.trim();
 
             if(trimmedKey) {
@@ -96,7 +98,10 @@ const ProductList = () => {
         <div className='product-list'>
             <h1>This is the Products page!</h1>
 
-            <input className='search-product-box' type='text' placeholder='Search product'></input>
+            <input className='search-product-box' type='text' placeholder='Search product'
+                value={searchKey} onChange={(e) => setSearchKey(e.currentTarget.value)}>
+            </input>
+            
             <button onClick={handleSearch} className='plSearchProductButton' type='button'>Search</button>
 
             {
