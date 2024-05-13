@@ -143,5 +143,5 @@ API runs on http://localhost:3005/
 Client runs on http://localhost:3000/
 
 ## User Guide
-After running the previous commands and the web app / API are running successfully, you will be greeted with a log in page.
+After running the previous commands and the API / web app are running successfully, you will be greeted with a log in page.
 
