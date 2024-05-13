@@ -139,6 +139,6 @@ Start Client
   npm start
 ```
 
-API runs on http://localhost:3005/
-Client runs on http://localhost:3000/
+* API runs on http://localhost:3005/
+* Client runs on http://localhost:3000/
 
