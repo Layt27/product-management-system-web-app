@@ -156,6 +156,9 @@
   width: 150px;
   border: 1px solid #00264d;
   padding: 5px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 /* Product List Update and Delete Buttons CSS */
