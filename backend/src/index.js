@@ -20,10 +20,10 @@ app.use(cors({
 
 // Handle OPTIONS requests
 app.options('*', (req, res) => {
-    res.set('Access-Control-Allow-Origin', 'https://product-management-system-wa.vercel.app');
-    res.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    res.status(200).send();
+    req.set('Access-Control-Allow-Origin', 'https://product-management-system-wa.vercel.app');
+    req.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    req.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    req.status(200).send();
 });
 
 const Jwt = require('jsonwebtoken');
