@@ -18,14 +18,6 @@ app.use(cors({
     optionsSuccessStatus: 200
 }));
 
-// Handle OPTIONS requests
-app.options('*', (req, res) => {
-    req.set('Access-Control-Allow-Origin', 'https://product-management-system-wa.vercel.app');
-    req.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    req.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    req.status(200).send();
-});
-
 const Jwt = require('jsonwebtoken');
 const jwtKey = 'pm-s-wa';
 
