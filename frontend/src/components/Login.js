@@ -39,7 +39,8 @@ const Login = () => {
             const res = await axios.post(`${REACT_APP_BACKEND_URL}login`, content,
                 {headers: {
                     Accept: 'application/json',
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
                 }
             });
             if(res.data.auth) {
