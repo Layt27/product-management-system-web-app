@@ -36,7 +36,7 @@ const Login = () => {
 
         try{
             const content = {email, password};
-            const res = await axios.post(`${REACT_APP_BACKEND_URL}login`, content);
+            const res = await axios.post(`${REACT_APP_BACKEND_URL}/login`, content);
             if(res.data.auth) {
                 localStorage.setItem('user', JSON.stringify(res.data.user));
                 localStorage.setItem('token', JSON.stringify(res.data.auth));
