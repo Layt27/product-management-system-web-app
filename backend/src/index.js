@@ -13,6 +13,7 @@ mongoose.set('strictQuery', false);
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cors({origin: 'https://product-management-system-wa.vercel.app'}));
+app.options('*', cors());       // Enable preflight requests for all routes
 
 const Jwt = require('jsonwebtoken');
 const jwtKey = 'pm-s-wa';
