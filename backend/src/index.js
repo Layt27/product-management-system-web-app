@@ -12,7 +12,7 @@ mongoose.set('strictQuery', false);
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use(cors({origin: 'https://product-management-system-wa.vercel.app/'}));
+app.use(cors({origin: 'https://product-management-system-wa.vercel.app'}));
 
 const Jwt = require('jsonwebtoken');
 const jwtKey = 'pm-s-wa';
