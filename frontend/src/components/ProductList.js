@@ -3,10 +3,6 @@ import React, {useState, useEffect} from 'react';
 import {useLocation, useNavigate, Link} from 'react-router-dom';
 import axios from 'axios';
 
-// Import dotenv package and load the environmental variables from the .env file
-const dotenv = require('dotenv');
-dotenv.config();
-
 // Store backend url in a variable to use for requests
 const REACT_APP_BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
