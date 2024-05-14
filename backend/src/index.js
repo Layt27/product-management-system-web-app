@@ -12,7 +12,11 @@ mongoose.set('strictQuery', false);
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use(cors({origin: 'https://product-management-system-wa.vercel.app'}));
+app.use(cors({
+    origin: 'https://product-management-system-wa.vercel.app',
+    credentials: true,
+    optionsSuccessStatus: 200
+}));
 
 // Handle OPTIONS requests
 app.options('*', (req, res) => {
