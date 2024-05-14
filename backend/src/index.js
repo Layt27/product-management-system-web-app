@@ -14,6 +14,14 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cors({origin: 'https://product-management-system-wa.vercel.app'}));
 
+// Handle OPTIONS requests
+app.options('*', (req, res) => {
+    res.set('Access-Control-Allow-Origin', 'https://product-management-system-wa.vercel.app');
+    res.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.status(200).send();
+});
+
 const Jwt = require('jsonwebtoken');
 const jwtKey = 'pm-s-wa';
 
