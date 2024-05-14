@@ -31,6 +31,8 @@ const ProductList = () => {
             if(e.response && e.response.status === 401) {
                 alert("The token has expired. Please log in again.");
                 logout();
+            } else if(e.response && e.response.status === 404) {
+                console.log("There are no products to display.", e.message);
             } else {
                 console.log("An unexpected error occurred while retrieving products.", e.message);
                 alert("An unexpected error occurred while retrieving products.");
