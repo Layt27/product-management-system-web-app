@@ -14,8 +14,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cors({
     origin: 'https://product-management-system-wa.vercel.app',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin'],
+    credentials: true,
+    optionsSuccessStatus: 200
 }));
 
 const Jwt = require('jsonwebtoken');
