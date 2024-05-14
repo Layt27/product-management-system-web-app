@@ -3,6 +3,9 @@ import React, {useState, useEffect} from 'react';
 import {useLocation, useNavigate, Link} from 'react-router-dom';
 import axios from 'axios';
 
+// Store backend url in a variable to use for requests
+const REACT_APP_BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
 const ProductList = () => {
     const [products, setProducts] = useState([]);
     const [searchKey, setSearchKey] = useState('');
@@ -22,7 +25,7 @@ const ProductList = () => {
 
     const getProducts = async() => {
         try{
-            const res = await axios.get('http://localhost:3005/products',
+            const res = await axios.get(`${REACT_APP_BACKEND_URL}products`,
                 {headers: {Authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`}}   // Sends the token to the Authorization header to authenticate requests
             );
             setProducts(res.data.products);
@@ -42,7 +45,7 @@ const ProductList = () => {
 
     const handleDelete = async(productId) => {
         try{
-            const res = await axios.delete(`http://localhost:3005/product/${productId}`,
+            await axios.delete(`${REACT_APP_BACKEND_URL}product/${productId}`,
                 {headers: {Authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`}}
             );
             getProducts();
@@ -68,7 +71,7 @@ const ProductList = () => {
 
             if(trimmedKey) {
                 const encodedKey = encodeURIComponent(trimmedKey);         // Encode the key to handle special characters in the search
-                const res = await axios.get(`http://localhost:3005/search/${encodedKey}`,
+                const res = await axios.get(`${REACT_APP_BACKEND_URL}search/${encodedKey}`,
                     {headers: {Authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`}}
                 );
                 if(res) {

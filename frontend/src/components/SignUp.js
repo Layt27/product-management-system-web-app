@@ -4,6 +4,9 @@ import {useNavigate, useLocation} from 'react-router-dom';
 import axios from 'axios';
 import Logo from '../images/web-app-logo.png';
 
+// Store backend url in a variable to use for requests
+const REACT_APP_BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
 const SignUp = () => {
     // `useState` hook creates three state variables (name, email, and password) and their corresponding setter functions (setName, setEmail, and setPassword)
     // These state variables are typically used to store and manage the values of input fields in a form
@@ -72,7 +75,7 @@ const SignUp = () => {
 
             if(trimmedName && trimmedEmail && trimmedMobileNumber) {
                 const content = {name: trimmedName, email: trimmedEmail, mobileNumber: trimmedMobileNumber, password};
-                const res = await axios.post('http://localhost:3005/signup', content);      // POST req to backend with `content` as req body
+                const res = await axios.post(`${REACT_APP_BACKEND_URL}signup`, content);      // POST req to backend with `content` as req body
                 localStorage.setItem('user', JSON.stringify(res.data.userResult));          // Stores user sign up data to local storage
                 localStorage.setItem('token', JSON.stringify(res.data.auth));          // Stores token to local storage
                 navigate('/');          // Redirect user to home page after signing up

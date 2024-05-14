@@ -3,6 +3,9 @@ import React, {useState, useEffect} from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
+// Store backend url in a variable to use for requests
+const REACT_APP_BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
 const AddProduct = () => {
     const [name, setProductName] = useState('');
     const [price, setProductPrice] = useState('');
@@ -59,7 +62,7 @@ const AddProduct = () => {
 
             if(trimmedName && trimmedPrice && trimmedCategory && trimmedCompany) {
                 const content = {name: trimmedName, price: trimmedPrice, category: trimmedCategory, company: trimmedCompany};
-                await axios.post('http://localhost:3005/add-product', content,
+                await axios.post(`${REACT_APP_BACKEND_URL}add-product`, content,
                     {headers: {Authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`}}
                 );
 

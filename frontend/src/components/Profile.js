@@ -3,6 +3,9 @@ import React, {useState, useEffect} from 'react';
 import {useParams, useLocation, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
+// Store backend url in a variable to use for requests
+const REACT_APP_BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
 const Profile = () => {
   	// Obtain user details from local storage
 	const auth = localStorage.getItem('user');
@@ -75,7 +78,7 @@ const Profile = () => {
 
 			if(trimmedName && trimmedEmail && trimmedMobileNumber) {
 				const content = {name: trimmedName, email: trimmedEmail, mobileNumber: trimmedMobileNumber};
-				await axios.put(`http://localhost:3005/profile/${params.id}`, content,
+				await axios.put(`${REACT_APP_BACKEND_URL}profile/${params.id}`, content,
 					{headers: {Authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`}}
 				);
 

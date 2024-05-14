@@ -4,6 +4,9 @@ import {useNavigate, useLocation} from 'react-router-dom';
 import axios from 'axios';
 import Logo from '../images/web-app-logo.png';
 
+// Store backend url in a variable to use for requests
+const REACT_APP_BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -33,7 +36,7 @@ const Login = () => {
 
         try{
             const content = {email, password};
-            const res = await axios.post('http://localhost:3005/login', content);
+            const res = await axios.post(`${REACT_APP_BACKEND_URL}login`, content);
             if(res.data.auth) {
                 localStorage.setItem('user', JSON.stringify(res.data.user));
                 localStorage.setItem('token', JSON.stringify(res.data.auth));

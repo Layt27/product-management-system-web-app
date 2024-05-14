@@ -3,6 +3,9 @@ import React, {useState, useEffect} from 'react';
 import {useParams, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
+// Store backend url in a variable to use for requests
+const REACT_APP_BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
 const UpdateProduct = () => {
     const [name, setProductName] = useState('');
     const [price, setProductPrice] = useState('');
@@ -24,7 +27,7 @@ const UpdateProduct = () => {
 
     const getProductDetails = async() => {      // async callback function here because we will call API inside it and that will return a promise
         try{                                    // and to handle the promise, we have to use async and await
-            const res = await axios.get(`http://localhost:3005/product/${params.id}`,
+            const res = await axios.get(`${REACT_APP_BACKEND_URL}product/${params.id}`,
                 {headers: {Authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`}}
             );
             setProductName(res.data.result.name);
@@ -80,7 +83,7 @@ const UpdateProduct = () => {
 
             if(trimmedName && trimmedPrice && trimmedCategory && trimmedCompany) {
                 const content = {name: trimmedName, price: trimmedPrice, category: trimmedCategory, company: trimmedCompany};
-                const res = await axios.put(`http://localhost:3005/product/${params.id}`, content,
+                const res = await axios.put(`${REACT_APP_BACKEND_URL}product/${params.id}`, content,
                     {headers: {Authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`}}
                 );
                 if(res) {
