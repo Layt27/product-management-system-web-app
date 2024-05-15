@@ -20,8 +20,7 @@ app.use(cors({
 }));
 
 const Jwt = require('jsonwebtoken');
-const jwtKey = 'pm-s-wa';
-
+const JWT_KEY = process.env.JWT_KEY;
 
 // Routes / Endpoints
 app.get('/', (req, res) => {
@@ -363,7 +362,7 @@ app.post('/signup', async(req, res) => {
             const userResult = user.toObject();
             delete userResult.password;
 
-            Jwt.sign({userResult}, jwtKey, {expiresIn: '2h'}, (err, token) => {
+            Jwt.sign({userResult}, JWT_KEY, {expiresIn: '2h'}, (err, token) => {
                 if(err) {
                     console.log("An unexpected error occurred while signing the Access Token.", err.message);
                     res.status(500).json({error: "An unexpected error occurred while signing the Access Token", message: err.message})
@@ -390,7 +389,7 @@ app.post('/login', async(req, res) => {
         if(email && password && reqBodyKeys.length === 2) {
             const user = await User.findOne(req.body).select('-password');          // .select('-password') excludes password field from result
             if(user) {
-                Jwt.sign({user}, jwtKey, {expiresIn: '2h'}, (err, token) => {
+                Jwt.sign({user}, JWT_KEY, {expiresIn: '2h'}, (err, token) => {
                     if(err) {
                         console.log("An unexpected error occurred while signing the Access Token.", err.message);
                         res.status(500).json({error: "An unexpected error occurred while signing the Access Token", message: err.message})
@@ -435,7 +434,7 @@ function verifyToken(req, res, next) {
         let token = req.headers['authorization'];
         if(token) {
             token = token.split(' ')[1];
-            Jwt.verify(token, jwtKey, (err, valid) => {
+            Jwt.verify(token, JWT_KEY, (err, valid) => {
                 if(err) {
                     console.log("Please provide a valid token.");
                     res.status(401).json({error: "Please provide a valid token", message: err.message});
