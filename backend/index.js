@@ -23,12 +23,11 @@ const Jwt = require('jsonwebtoken');
 const jwtKey = 'pm-s-wa';
 
 
-// Deployment test
+// Routes / Endpoints
 app.get('/', (req, res) => {
     res.send('Backend server is running...')
 });
 
-// Routes / Endpoints
 // ------------------------------------------------------- Products API -------------------------------------------------------
 app.get('/products', verifyToken, async(req, res) => {
     try{
