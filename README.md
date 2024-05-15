@@ -143,5 +143,22 @@ Start Client
 * API runs on http://localhost:3005/
 * Client runs on http://localhost:3000/
 
+
+### Landing / Log in Page
+![login_page](https://github.com/Layt27/product-management-system-web-app/assets/122161035/f2bea69e-310c-41a7-b2e4-d234c59cc68e)
+
+To log in, use these placeholder credentials:
+```
+Email: 'user123@abc.com'
+Password: 'user123'
+```
+
+Alternate user:
+```
+Email: 'user456@abc.com'
+Password: 'user456'
+```
+
+
 ## Link to Deployed Web App
 https://product-management-system-wa.vercel.app/
