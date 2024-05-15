@@ -9,7 +9,7 @@
 Product Management System is a comprehensive web application that enables users to manage various aspects of their products.
 
 
-## Built With
+## Built with
 
 The following frameworks and libraries were used to build our Automated Attendance System (AAS):
 
@@ -74,7 +74,7 @@ Go to the project directory
 
 
 
-### Setting up manually
+### Setting Up Manually
 
 #### Setup API
 Go to the backend directory
@@ -121,7 +121,7 @@ Start API
   npm run start
 ```
 
-### Run Client locally
+### Run Client Locally
 Go to the project directory
 
 ```shell
@@ -143,5 +143,5 @@ Start Client
 * API runs on http://localhost:3005/
 * Client runs on http://localhost:3000/
 
-## Link to deployed web app
+## Link to Deployed Web App
 https://product-management-system-wa.vercel.app/login
