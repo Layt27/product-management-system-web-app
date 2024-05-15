@@ -144,4 +144,4 @@ Start Client
 * Client runs on http://localhost:3000/
 
 ## Link to Deployed Web App
-https://product-management-system-wa.vercel.app/login
+https://product-management-system-wa.vercel.app/
