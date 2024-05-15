@@ -25,7 +25,7 @@ const ProductList = () => {
 
     const getProducts = async() => {
         try{
-            const res = await axios.get(`${REACT_APP_BACKEND_URL}products`,
+            const res = await axios.get(`${REACT_APP_BACKEND_URL}/products`,
                 {headers: {Authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`}}   // Sends the token to the Authorization header to authenticate requests
             );
             setProducts(res.data.products);
@@ -45,7 +45,7 @@ const ProductList = () => {
 
     const handleDelete = async(productId) => {
         try{
-            await axios.delete(`${REACT_APP_BACKEND_URL}product/${productId}`,
+            await axios.delete(`${REACT_APP_BACKEND_URL}/product/${productId}`,
                 {headers: {Authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`}}
             );
             getProducts();
@@ -71,7 +71,7 @@ const ProductList = () => {
 
             if(trimmedKey) {
                 const encodedKey = encodeURIComponent(trimmedKey);         // Encode the key to handle special characters in the search
-                const res = await axios.get(`${REACT_APP_BACKEND_URL}search/${encodedKey}`,
+                const res = await axios.get(`${REACT_APP_BACKEND_URL}/search/${encodedKey}`,
                     {headers: {Authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`}}
                 );
                 if(res) {

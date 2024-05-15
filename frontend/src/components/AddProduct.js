@@ -62,7 +62,7 @@ const AddProduct = () => {
 
             if(trimmedName && trimmedPrice && trimmedCategory && trimmedCompany) {
                 const content = {name: trimmedName, price: trimmedPrice, category: trimmedCategory, company: trimmedCompany};
-                await axios.post(`${REACT_APP_BACKEND_URL}add-product`, content,
+                await axios.post(`${REACT_APP_BACKEND_URL}/add-product`, content,
                     {headers: {Authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`}}
                 );
 

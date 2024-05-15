@@ -78,7 +78,7 @@ const Profile = () => {
 
 			if(trimmedName && trimmedEmail && trimmedMobileNumber) {
 				const content = {name: trimmedName, email: trimmedEmail, mobileNumber: trimmedMobileNumber};
-				await axios.put(`${REACT_APP_BACKEND_URL}profile/${params.id}`, content,
+				await axios.put(`${REACT_APP_BACKEND_URL}/profile/${params.id}`, content,
 					{headers: {Authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`}}
 				);
 
