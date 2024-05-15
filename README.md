@@ -54,8 +54,9 @@ Before you begin, you will need to have the following installed and configured o
 
     ```.env
         # Configuration Settings
-        PORT = <custom port number>
-        CONNECTION = <connection string>
+        PORT = <custom-port-number>
+        CONNECTION = <connection-string>
+        JWT_KEY = <user-specified-key>
     ```
 ## Getting Started
 
@@ -142,3 +143,5 @@ Start Client
 * API runs on http://localhost:3005/
 * Client runs on http://localhost:3000/
 
+## Link to deployed web app
+https://product-management-system-wa.vercel.app/login
