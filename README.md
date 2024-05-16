@@ -50,7 +50,7 @@ Before you begin, you will need to have the following installed and configured o
 
 * npm and Node.js: You can download and install these from the official website: https://nodejs.org/en/
 * MongoDB Atlas: You will need to have a MongoDB Atlas account to create a cluster and view or manage the collections created. You can access MongoDB Atlas from the official website: https://www.mongodb.com/atlas.
-* A .env file: You will need to create a .env file in `backend/` with the necessary configurations. You can use the provided .env file as a template.
+* A backend .env file: You will need to create a .env file in `backend/` with the necessary configurations. You can use the provided .env file as a template.
 
     ```.env
         # Configuration Settings
@@ -58,16 +58,20 @@ Before you begin, you will need to have the following installed and configured o
         CONNECTION = <connection-string>
         JWT_KEY = <user-specified-key>
     ```
+* A frontend .env file: You will need to create a .env file in `frontend/` with the necessary configurations. You can use the provided .env file as a template.
+
+    ```.env
+        # Backend URL
+        REACT_APP_BACKEND_URL = <local-host-url>
+    ```
 ## Getting Started
 
 Clone the project
-
 ```shell
   git clone https://github.com/Layt27/product-management-system-web-app
 ```
 
 Go to the project directory
-
 ```shell
   cd product-management-system-web-app
 ```
@@ -77,19 +81,19 @@ Go to the project directory
 ### Setting Up Manually
 
 #### Setup API
-Go to the backend directory
 
+Go to the backend directory
 ```shell
   cd backend
 ```
 
 Install backend dependencies
-
 ```shell
   npm install
 ```
 
 #### Setup Client
+
 Go to the frontend directory
 ```shell
   cd frontend
@@ -103,45 +107,56 @@ Install frontend dependencies
 ## Running Locally
 
 ### Run API locally
-Go to the project directory
 
+In the `index.js` file within the `backend/` folder, replace:
+```shell
+  app.use(cors({
+    origin: 'https://product-management-system-wa.vercel.app',
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+    optionsSuccessStatus: 200
+  }));
+```
+
+with:
+```shell
+  app.use(cors({origin: '*'}));
+```
+
+Go to the project directory
 ```shell
   cd product-management-system-web-app
 ```
 
 Go to the backend directory
-
 ```shell
   cd backend
 ```
 
 Start API
-
 ```shell
   npm run start
 ```
 
 ### Run Client Locally
-Go to the project directory
 
+Go to the project directory
 ```shell
   cd product-management-system-web-app
 ```
 
 Go to the frontend directory
-
 ```shell
   cd frontend
 ```
 
 Start Client
-
 ```shell
   npm start
 ```
 
-* API runs on http://localhost:3005/
-* Client runs on http://localhost:3000/
+* API runs on http://localhost:3005
+* Client runs on http://localhost:3000
 
 
 ### Landing / Log in Page
