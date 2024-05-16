@@ -225,7 +225,7 @@ app.get('/search/:key', verifyToken, async(req, res) => {            // Query Fi
 });
 
 // ------------------------------------------------------- Users API -------------------------------------------------------
-app.get('/api/users', async(req, res) => {        // Used for testing purposes and not part of web app
+app.get('/api/users', verifyToken, async(req, res) => {        // Used for testing purposes and not part of web app
     try{
         const allUsers = await User.find();
         if(allUsers.length > 0) {
@@ -411,7 +411,7 @@ app.post('/login', async(req, res) => {
     }
 });
 
-app.delete('/api/users/:id', async(req, res) => {
+app.delete('/api/users/:id', verifyToken, async(req, res) => {      // Used for testing purposes and not part of web app
     try{
         const userId = req.params.id;
         const result = await User.findByIdAndDelete({_id: userId});
