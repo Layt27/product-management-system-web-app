@@ -6,7 +6,7 @@
 
 ## Description
 
-Product Management System is a comprehensive web application that enables users to manage various aspects of their products.
+Product Management System is a comprehensive web application that enables users to perform CRUD operations on products.
 
 
 ## Built with
