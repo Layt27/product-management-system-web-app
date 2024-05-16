@@ -6,10 +6,10 @@
 
 ## Description
 
-Product Management System is a comprehensive web application that enables users to manage various aspects of their products.
+Product Management System is a comprehensive web application that enables users to perform CRUD operations on products.
 
 
-## Built With
+## Built with
 
 The following frameworks and libraries were used to build our Automated Attendance System (AAS):
 
@@ -50,45 +50,50 @@ Before you begin, you will need to have the following installed and configured o
 
 * npm and Node.js: You can download and install these from the official website: https://nodejs.org/en/
 * MongoDB Atlas: You will need to have a MongoDB Atlas account to create a cluster and view or manage the collections created. You can access MongoDB Atlas from the official website: https://www.mongodb.com/atlas.
-* A .env file: You will need to create a .env file in `backend/` with the necessary configurations. You can use the provided .env file as a template.
+* A backend .env file: You will need to create a .env file in `backend/` with the necessary configurations. You can use the provided .env file as a template.
 
     ```.env
         # Configuration Settings
-        PORT = <custom port number>
-        CONNECTION = <connection string>
+        PORT = <custom-port-number>
+        CONNECTION = <connection-string>
+        JWT_KEY = <user-specified-key>
+    ```
+* A frontend .env file: You will need to create a .env file in `frontend/` with the necessary configurations. You can use the provided .env file as a template.
+
+    ```.env
+        # Backend URL
+        REACT_APP_BACKEND_URL = <local-host-url>
     ```
 ## Getting Started
 
 Clone the project
-
 ```shell
   git clone https://github.com/Layt27/product-management-system-web-app
 ```
 
 Go to the project directory
-
 ```shell
   cd product-management-system-web-app
 ```
 
 
 
-### Setting up manually
+### Setting Up Manually
 
 #### Setup API
-Go to the backend directory
 
+Go to the backend directory
 ```shell
   cd backend
 ```
 
 Install backend dependencies
-
 ```shell
   npm install
 ```
 
 #### Setup Client
+
 Go to the frontend directory
 ```shell
   cd frontend
@@ -102,43 +107,73 @@ Install frontend dependencies
 ## Running Locally
 
 ### Run API locally
-Go to the project directory
 
+In the `index.js` file within the `backend/` folder, replace:
+```shell
+  app.use(cors({
+    origin: 'https://product-management-system-wa.vercel.app',
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+    optionsSuccessStatus: 200
+  }));
+```
+
+with:
+```shell
+  app.use(cors({origin: '*'}));
+```
+
+Go to the project directory
 ```shell
   cd product-management-system-web-app
 ```
 
 Go to the backend directory
-
 ```shell
   cd backend
 ```
 
 Start API
-
 ```shell
   npm run start
 ```
 
-### Run Client locally
-Go to the project directory
+### Run Client Locally
 
+Go to the project directory
 ```shell
   cd product-management-system-web-app
 ```
 
 Go to the frontend directory
-
 ```shell
   cd frontend
 ```
 
 Start Client
-
 ```shell
   npm start
 ```
 
-* API runs on http://localhost:3005/
-* Client runs on http://localhost:3000/
+* API runs on http://localhost:3005
+* Client runs on http://localhost:3000
 
+
+### Landing / Log in Page
+![login_page](https://github.com/Layt27/product-management-system-web-app/assets/122161035/f2bea69e-310c-41a7-b2e4-d234c59cc68e)
+
+To log in, use these placeholder credentials:
+```
+Email: 'user123@abc.com'
+Password: 'user123'
+```
+
+Alternate user:
+```
+Email: 'user456@abc.com'
+Password: 'user456'
+```
+
+
+## Link to Deployed Web App
+https://product-management-system-wa.vercel.app
